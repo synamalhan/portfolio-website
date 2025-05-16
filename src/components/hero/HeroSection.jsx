@@ -40,7 +40,7 @@ const styles = {
     fontSize: '5rem',
     fontWeight: '700',
     margin: 0,
-    textShadow: '0 0 10px #00ccff',
+    textShadow: '0 0 10px #edbfff',
   },
   tagline: {
     fontFamily: "'Lora', serif",
@@ -48,7 +48,7 @@ const styles = {
     marginTop: '1rem',
     fontWeight: '400',
     fontStyle: 'italic',
-    color: '#a0d8ef',
+    color: '#edbfff',
     maxWidth: '600px',
   },
   downArrow: {
@@ -68,7 +68,7 @@ const styles = {
   lottie: {
     width: '100%',
     height: '100%',
-    filter: 'hue-rotate(60deg)',     
+    filter: 'hue-rotate(0deg)',     
   },
 };
 

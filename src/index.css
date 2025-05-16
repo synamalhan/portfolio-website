@@ -30,3 +30,32 @@ html {
     transform: translateY(15px);
   }
 }
+@keyframes marquee {
+  0% { transform: translateX(100%) }
+  100% { transform: translateX(-100%) }
+}
+
+@keyframes marquee-reverse {
+  0% { transform: translateX(-100%) }
+  100% { transform: translateX(100%) }
+}
+
+.animate-marquee {
+  animation: marquee 25s linear infinite;
+}
+
+.animate-marquee-reverse {
+  animation: marquee-reverse 25s linear infinite;
+}
+
+@keyframes float {
+  0% { transform: translateY(0px) rotate(0deg); }
+  50% { transform: translateY(-20px) rotate(5deg); }
+  100% { transform: translateY(0px) rotate(-5deg); }
+}
+
+.animate-float {
+  animation: float ease-in-out infinite;
+}
+
+

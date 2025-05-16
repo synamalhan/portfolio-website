@@ -4,12 +4,12 @@ import Navbar from '../components/global/Navbar';
 import HeroSection from '../components/hero/HeroSection';
 import AboutMe from '../components/about/AboutMe';
 import WorkExperienceSection from '../components/experience/WorkExperienceSection';
+import ProjectSection from '../components/projects/ProjectSection';
+import SkillSection from '../components/skills/SkillSection';
+import ContactSection from '../components/contacts/ContactSection';
+import SunkenShipSection from '../components/hobbies/SunkenShipSection';
 
 const sections = [
-  { id: 'projects', title: 'Projects' },
-  { id: 'skills', title: 'Skills' },
-  { id: 'contact', title: 'Contact (Submarine)' },
-  { id: 'sunken-ship', title: 'Sunken Ship (Fun Facts)' },
 ];
 
 const HomePage = () => {
@@ -20,6 +20,10 @@ const HomePage = () => {
         <HeroSection />
         <AboutMe />
         <WorkExperienceSection />
+        <ProjectSection />
+        <SkillSection />
+        <ContactSection />
+        <SunkenShipSection />
         {sections.map(({ id, title }) => (
           <section
             id={id}

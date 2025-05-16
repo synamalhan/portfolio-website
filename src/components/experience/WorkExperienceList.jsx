@@ -89,7 +89,7 @@ const WorkExperienceList = () => {
         <div
           key={i}
           style={{
-            marginTop: i % 2 === 0 ? 0 : 180,  // Offset odd cards down by 40px
+            marginTop: i % 2 === 0 ? 0 : 280,  // Staggered layout like WorkExperienceList
             transition: 'margin-top 0.3s ease',
           }}
         >

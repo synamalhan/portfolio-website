@@ -8,10 +8,10 @@ const WorkExperienceSection = () => {
       id="experience"
       style={{
         background: 'linear-gradient(180deg, #002933 0%, #001a1f 100%)',
-        height: '100vh',
-        padding: '40px 20px',
+        height: '200%',
+        padding: '0px 20px',
         display: 'flex',
-        justifyContent: 'center',
+        justifyContent: 'top',
         alignItems: 'center',
         flexDirection: 'column',
         color: '#a0d8ef',

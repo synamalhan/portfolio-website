@@ -1,6 +1,6 @@
 import React, { useState, useMemo } from 'react';
 import Lottie from 'lottie-react';
-import bubbleAnimation from '../../assets/bubbles.json';
+import bubbleAnimation from '../../assets/bubblesnew.json';
 import bubblesGif from '../../assets/bubbles.gif';
 
 const huesWithFilters = [
@@ -49,12 +49,12 @@ const WorkExperienceCard = ({ title, company, duration, summary, details, logo }
         <img
           src={bubblesGif}
           alt="Animated background"
-          style={{ ...styles.lottie, filter: lottieFilter, opacity:0.5 }}
+          style={{ ...styles.lottie, filter: lottieFilter, opacity:0.03 }}
         />
         <Lottie
           animationData={bubbleAnimation}
           loop
-          style={{ ...styles.lottie, filter: lottieFilter, opacity: 0.7  }}
+          style={{ ...styles.lottie, filter: lottieFilter, opacity: 1  }}
         />
 
         <div style={styles.textOverlay}>
@@ -98,8 +98,8 @@ const WorkExperienceCard = ({ title, company, duration, summary, details, logo }
 const styles = {
   card: {
     position: 'relative',
-    width: 250,
-    height: 250,
+    width: 350,
+    height: 350,
     margin: 20,
     cursor: 'pointer',
     borderRadius: 20,

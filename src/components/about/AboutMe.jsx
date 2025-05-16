@@ -77,6 +77,8 @@ const styles = {
     fontSize: '3rem',
     marginBottom: '20px',
     color: '#00e5ff',
+    textShadow: '2px 2px 6px rgba(0,0,0,1)',
+
   },
   text: {
     fontSize: '1.25rem',
