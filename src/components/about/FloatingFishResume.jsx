@@ -1,0 +1,83 @@
+import React, { useState } from 'react';
+import Lottie from 'lottie-react';
+import fishAnimation from '../../assets/fish.json';
+
+const FloatingFishResume = () => {
+  const [open, setOpen] = useState(false);
+
+  const handleDownload = () => {
+    const link = document.createElement('a');
+    link.href = '/resume.pdf'; // Place resume.pdf in your public/ directory
+    link.download = 'Syna_Resume.pdf';
+    document.body.appendChild(link);
+    link.click();
+    document.body.removeChild(link);
+  };
+
+  return (
+    <div
+      style={styles.container}
+      onMouseEnter={() => setOpen(true)}
+      onMouseLeave={() => setOpen(false)}
+      onClick={handleDownload}
+      aria-label="Floating fish with downloadable resume"
+      role="button"
+      tabIndex={0}
+      onKeyPress={(e) => { if (e.key === 'Enter') handleDownload(); }}
+    >
+      <div style={styles.lottieWrapper}>
+        <Lottie 
+          animationData={fishAnimation} 
+          loop={true} 
+          style={styles.lottie} 
+        />
+        {open && (
+          <div style={styles.resumeLink}>Download Resume</div>
+        )}
+      </div>
+    </div>
+  );
+};
+
+const styles = {
+  container: {
+    position: 'relative',
+    width: '400px',
+    height: '400px',
+    margin: '20px',
+    cursor: 'pointer',
+    userSelect: 'none',
+    outline: 'none',
+    display: 'flex',
+    justifyContent: 'center',
+    alignItems: 'center',
+  },
+  lottieWrapper: {
+    position: 'relative',
+    width: '100%',
+    height: '100%',
+  },
+  lottie: {
+    width: '100%',
+    height: '100%',
+    transform: 'rotate(25deg)',
+    pointerEvents: 'none',
+  },
+  resumeLink: {
+    position: 'absolute',
+    top: '50%',
+    left: '50%',
+    transform: 'translate(-50%, -50%)',
+    background: 'rgba(0, 0, 0, 0.5)',
+    color: '#87CEEB',
+    textDecoration: 'underline',
+    fontWeight: 'bold',
+    fontFamily: "'Montserrat', sans-serif",
+    padding: '8px 16px',
+    borderRadius: '8px',
+    zIndex: 10,
+    pointerEvents: 'none', // So clicking the text also triggers the fish click
+  },
+};
+
+export default FloatingFishResume;
