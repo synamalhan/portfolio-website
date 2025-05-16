@@ -1,6 +1,9 @@
 import React, { useState, useEffect } from 'react';
 import FloatingFishResume from './FloatingFishResume';
 import FloatingFishResume2 from './FloatingFishResume2';
+import FloatingFishResume3 from './FloatingFishResume3';
+import FloatingFishResume4 from './FloatingFishResume4';
+import FloatingFishResume5 from './FloatingFishResume5';
 
 const AboutMe = () => {
   const [windowWidth, setWindowWidth] = useState(window.innerWidth);
@@ -25,35 +28,50 @@ const AboutMe = () => {
       }}
     >
       {/* Left fish only on large screens */}
+      {/* Left fish cluster */}
       {!isSmall && (
-        <div style={{ ...styles.fishWrapper, marginRight: '20px', justifyContent: 'center' }}>
-          <div style={{ transform: 'translateX(-30px) scale(0.7)' }}>
+        <div style={styles.leftFishContainer}>
+          <div style={styles.centerFish}>
             <FloatingFishResume2 />
+          </div>
+          <div style={styles.sideFishLeft}>
+            <FloatingFishResume3 />
+          </div>
+          <div style={styles.sideFishRight}>
+            <FloatingFishResume4 />
           </div>
         </div>
       )}
 
+
       <div
         style={{
           ...styles.textContainer,
+          justifyContent: 'center',
           textAlign: 'center',
-          margin: isMobile ? '20px 0' : '0 40px',
           maxWidth: isMobile ? '100%' : '600px',
         }}
       >
         <h2 style={styles.title}>About Me</h2>
         <p style={styles.text}>
-          Hi! I’m Syna Malhan, a computer science student and aspiring developer fascinated by the depths of technology and marine life.
-          I love creating interactive web experiences and combining creativity with code.
-          This portfolio is a journey through my skills, projects, and passions.
-          PS: If you want my resume ask the fishes!
+  Hi! I’m <strong>Syna Malhan</strong>, a curious computer science student with a love for merging logic with imagination. Whether it's through writing expressive code, exploring the elegance of algorithms, or crafting immersive front-end interfaces, I’m always looking for new ways to make digital experiences more intuitive and delightful.<br /><br />
+  Outside the world of tech, I’m endlessly inspired by marine life — the colors, movement, and mysteries of the ocean often find their way into my creative process. This portfolio is a reflection of both my technical journey and my love for nature’s quiet intelligence.<br /><br />
+  <span style={styles.resumeHint}>
+    🐠 P.S. If you're looking for my resume... you'll have to ask the fishes swimming around this section!
+  </span>
+
+
         </p>
       </div>
 
+      
       {/* Right fish always visible, smaller on mobile */}
-      <div style={{ ...styles.fishWrapper, marginLeft: isMobile ? 0 : '20px', justifyContent: 'center' }}>
-        <FloatingFishResume size={isMobile ? 150 : 400} />
+      {/* Right fish column */}
+      <div style={styles.rightFishContainer}>
+        <FloatingFishResume size={isMobile ? 150 : 200} />
+        <FloatingFishResume5 size={isMobile ? 50 : 100} />
       </div>
+
     </section>
   );
 };
@@ -88,6 +106,48 @@ const styles = {
     display: 'flex',
     alignItems: 'center',
   },
+  leftFishContainer: {
+    position: 'relative',
+    width: 250,
+    height: 250,
+    display: 'flex',
+    justifyContent: 'center',
+    alignItems: 'center',
+    marginRight: '40px',
+  },
+  
+  centerFish: {
+    position: 'absolute',
+    top: '50%',
+    left: '50%',
+    transform: 'translate(-50%, -50%) scale(0.7)',
+    zIndex: 2,
+  },
+  
+  sideFishLeft: {
+    position: 'absolute',
+    top: '25%',
+    left: '10%',
+    transform: 'scale(0.5)',
+    zIndex: 1,
+  },
+  
+  sideFishRight: {
+    position: 'absolute',
+    bottom: '25%',
+    right: '10%',
+    transform: 'scale(0.5)',
+    zIndex: 1,
+  },
+  
+  rightFishContainer: {
+    display: 'flex',
+    flexDirection: 'column',
+    alignItems: 'center',
+    gap: '20px',
+    marginLeft: '40px',
+  },
+  
 };
 
 export default AboutMe;

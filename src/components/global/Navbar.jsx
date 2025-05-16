@@ -8,7 +8,6 @@ const sections = [
   { id: 'projects', label: 'Projects' },
   { id: 'skills', label: 'Skills' },
   { id: 'contact', label: 'Contact' },
-  { id: 'sunken-ship', label: 'Sunken Ship' },
 ];
 
 const Navbar = () => {
@@ -95,7 +94,7 @@ const styles = {
     marginBottom: 24,
   },
   menuLink: {
-    color: '#00ccff',
+    color: '#b6a3ff',
     fontSize: '1.5rem',
     textDecoration: 'none',
     fontWeight: '600',

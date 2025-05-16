@@ -2,12 +2,12 @@ import React, { useState } from 'react';
 import Lottie from 'lottie-react';
 import fishAnimation from '../../assets/fish.json';
 
-const FloatingFishResume = () => {
+const FloatingFishResume5 = () => {
   const [open, setOpen] = useState(false);
 
   const handleDownload = () => {
     const link = document.createElement('a');
-    link.href = '/resume.pdf'; // Place resume.pdf in your public/ directory
+    link.href = '/resume.pdf';
     link.download = 'Syna_Resume.pdf';
     document.body.appendChild(link);
     link.click();
@@ -42,8 +42,7 @@ const FloatingFishResume = () => {
 const styles = {
   container: {
     position: 'relative',
-    width: '400px',
-    height: '400px',
+    width: '400px',      // smaller size
     margin: '20px',
     cursor: 'pointer',
     userSelect: 'none',
@@ -51,6 +50,7 @@ const styles = {
     display: 'flex',
     justifyContent: 'center',
     alignItems: 'center',
+    // transform: 'translateX(-50px)',  // lateral shift to the left
   },
   lottieWrapper: {
     position: 'relative',
@@ -60,7 +60,8 @@ const styles = {
   lottie: {
     width: '100%',
     height: '100%',
-    transform: 'rotate(-15deg)',
+    transform: ' rotate(15deg)',        // flip horizontally
+    filter: 'hue-rotate(200deg)',     // shift color hue (adjust value as desired)
     pointerEvents: 'none',
   },
   resumeLink: {
@@ -76,8 +77,8 @@ const styles = {
     padding: '8px 16px',
     borderRadius: '8px',
     zIndex: 10,
-    pointerEvents: 'none', // So clicking the text also triggers the fish click
+    pointerEvents: 'none',
   },
 };
 
-export default FloatingFishResume;
+export default FloatingFishResume5;
