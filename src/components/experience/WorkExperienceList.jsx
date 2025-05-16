@@ -1,88 +1,107 @@
 // src/components/WorkExperienceList.jsx
 import React from 'react';
 import WorkExperienceCard from './WorkExperienceCard';
-import asu from '../../assets/logo.png'
+import jspl from '../../assets/jspl.png';
+import asu from '../../assets/asu.png';
+import pwc from '../../assets/pwc.png';
+import ripik from '../../assets/ripik.svg';
+import headstarter from '../../assets/headstarter.avif';
 const experiences = [
   {
-    title: 'Cloud Front End Developer',
-    company: 'Built responsive UI components with React.',
-    duration: '',
+    title: 'Trainee',
+    company: 'PwC',
+    duration: 'June 2025 - July 2025',
+    summary: 'Details to come...',
     details: (
       <>
-        <p>Worked on React, Redux, and Styled Components to build complex UI features.</p>
-        <p>Collaborated with designers and backend engineers for seamless integration.</p>
+        <p>Details to come...</p>
+      </>
+    ),
+    logo: pwc,
+  },
+  {
+    title: 'Cloud Front End Developer',
+    company: 'Arizona State University AI Cloud Innovation Center',
+    duration: 'Aug 2024 - Present',
+    summary: 'Built cloud infrastructure with AWS and UI, improving user experience for public sector solutions.',
+    details: (
+      <>
         <ul>
-          <li>Implemented reusable components</li>
-          <li>Improved app performance by 30%</li>
-          <li>Optimized CSS and animations</li>
+          <li>Collaborated on AI/ML projects, supporting CIC operations and generating status reports for stakeholders.</li>
         </ul>
       </>
     ),
     logo: asu,
   },
   {
-    title: 'Frontend Developer at Company X',
-    summary: 'Built responsive UI components with React.',
+    title: 'Intern in Digitalization',
+    company: 'Jindal Steel and Power Ltd',
+    duration: 'May 2024 - July 2024',
+    summary: 'Developed full-stack app with AngularJS, Spring Boot, and SQL, improving data retrieval speed by 15%.',
     details: (
       <>
-        <p>Worked on React, Redux, and Styled Components to build complex UI features.</p>
-        <p>Collaborated with designers and backend engineers for seamless integration.</p>
         <ul>
-          <li>Implemented reusable components</li>
-          <li>Improved app performance by 30%</li>
-          <li>Optimized CSS and animations</li>
+          <li>Deployed the app on Tomcat and integrated cloud services to enhance system performance.</li>
         </ul>
       </>
     ),
+    logo: jspl,
   },
   {
-    title: 'Intern at Marine Tech Inc.',
-    summary: 'Developed interactive marine biology visualizations.',
+    title: 'Intern in Machine Learning and Data Analytics',
+    company: 'Ripik.AI',
+    duration: 'July 2024 – Aug 2024',
+    summary: 'Engineered algorithms using YOLO and Ultralytics, improving accuracy by 80%.',
     details: (
       <>
-        <p>Created Lottie animations and data visualizations related to marine life.</p>
-        <p>Contributed to UI/UX improvements and frontend testing.</p>
-      </>
-    ),
-  },
-  {
-    title: 'Frontend Developer at Company X',
-    summary: 'Built responsive UI components with React.',
-    details: (
-      <>
-        <p>Worked on React, Redux, and Styled Components to build complex UI features.</p>
-        <p>Collaborated with designers and backend engineers for seamless integration.</p>
         <ul>
-          <li>Implemented reusable components</li>
-          <li>Improved app performance by 30%</li>
-          <li>Optimized CSS and animations</li>
+          <li>Trained OCR models and integrated AI solutions into operations, increasing recognition accuracy by 25%.</li>
         </ul>
       </>
     ),
+    logo: ripik,
+
   },
   {
-    title: 'Intern at Marine Tech Inc.',
-    summary: 'Developed interactive marine biology visualizations.',
+    title: 'Software Engineering Fellow',
+    company: 'Headstarter AI',
+    duration: 'July 2024 – Sept 2024',
+    summary: 'Built 5+ AI apps using NextJS, OpenAI, Pinecone, StripeAPI, achieving 98% accuracy.',
     details: (
       <>
-        <p>Created Lottie animations and data visualizations related to marine life.</p>
-        <p>Contributed to UI/UX improvements and frontend testing.</p>
+        <ul>
+          <li>Led 4+ engineering fellows in full-stack development, with coaching from Amazon, Bloomberg, and Capital One engineers.</li>
+        </ul>
       </>
     ),
+    logo: headstarter,
+
+
   },
-  // Add more as needed
 ];
+
+
 
 const WorkExperienceList = () => {
   return (
     <div style={{ display: 'flex', flexWrap: 'wrap', justifyContent: 'center' }}>
       {experiences.map((exp, i) => (
-        <WorkExperienceCard
+        <div
           key={i}
-          title={exp.title}
-          summary={exp.summary}
-          details={exp.details}
-        />
+          style={{
+            marginTop: i % 2 === 0 ? 0 : 180,  // Offset odd cards down by 40px
+            transition: 'margin-top 0.3s ease',
+          }}
+        >
+          <WorkExperienceCard
+            title={exp.title}
+            company={exp.company}
+            duration={exp.duration}
+            summary={exp.summary}
+            details={exp.details}
+            logo={exp.logo || asu}
+          />
+        </div>
       ))}
     </div>
   );

@@ -1,22 +1,19 @@
 import React, { useState, useMemo } from 'react';
 import Lottie from 'lottie-react';
 import bubbleAnimation from '../../assets/bubbles.json';
-// import logo from '../../assets/logo.png';
+import bubblesGif from '../../assets/bubbles.gif';
 
-// Fixed hues and their corresponding CSS filter for Lottie tinting
 const huesWithFilters = [
-  { color: 'hsl(210, 70%, 60%)', filter: 'hue-rotate(0deg) ' },   // Blue (base)
-  { color: 'hsl(230, 70%, 60%)', filter: 'hue-rotate(20deg) ' },  // Slightly lighter blue
-  { color: 'hsl(250, 70%, 60%)', filter: 'hue-rotate(40deg) ' }, // Indigo-ish
-  { color: 'hsl(270, 80%, 65%)', filter: 'hue-rotate(60deg)' },  // Violet
-  { color: 'hsl(280, 80%, 55%)', filter: 'hue-rotate(80deg) ' },  // Purple
+  { color: 'hsl(210, 70%, 60%)', filter: 'hue-rotate(0deg) ' },
+  { color: 'hsl(230, 70%, 60%)', filter: 'hue-rotate(20deg) ' },
+  { color: 'hsl(250, 70%, 60%)', filter: 'hue-rotate(40deg) ' },
+  { color: 'hsl(270, 80%, 65%)', filter: 'hue-rotate(60deg)' },
+  { color: 'hsl(280, 80%, 55%)', filter: 'hue-rotate(80deg) ' },
 ];
-
 
 const WorkExperienceCard = ({ title, company, duration, summary, details, logo }) => {
   const [modalOpen, setModalOpen] = useState(false);
 
-  // Pick random hue + filter once per component instance
   const { color: blobFillColor, filter: lottieFilter } = useMemo(() => {
     const idx = Math.floor(Math.random() * huesWithFilters.length);
     return huesWithFilters[idx];
@@ -49,17 +46,22 @@ const WorkExperienceCard = ({ title, company, duration, summary, details, logo }
           if (e.key === 'Enter') setModalOpen(true);
         }}
       >
+        <img
+          src={bubblesGif}
+          alt="Animated background"
+          style={{ ...styles.lottie, filter: lottieFilter, opacity:0.5 }}
+        />
         <Lottie
           animationData={bubbleAnimation}
           loop
-          style={{ ...styles.lottie, filter: lottieFilter }}
+          style={{ ...styles.lottie, filter: lottieFilter, opacity: 0.7  }}
         />
 
         <div style={styles.textOverlay}>
+          <img src={logo} alt="Logo" style={styles.logo} />
           <div style={styles.titleText}>{title}</div>
           <div style={styles.companyText}>{company}</div>
           <div style={styles.durationText}>{duration}</div>
-          <img src={logo} alt="Logo" style={styles.logo} />
         </div>
       </div>
 
@@ -73,9 +75,11 @@ const WorkExperienceCard = ({ title, company, duration, summary, details, logo }
             aria-labelledby="modal-title"
           >
             <div style={styles.blobBackground}>{blobSvg}</div>
-            <h2 id="modal-title" style={styles.modalTitle}>
-              {title}
-            </h2>
+            <img src={logo} alt="Modal Logo" style={styles.modalLogo} />
+            <h2 id="modal-title" style={styles.modalTitle}>{title}</h2>
+            <p style={{ fontSize: '1.1rem', fontWeight: '500', marginBottom: '15px', color: '#d0e8ff' }}>
+              {summary}
+            </p>
             <div style={styles.modalDetails}>{details}</div>
             <button
               onClick={() => setModalOpen(false)}
@@ -111,6 +115,7 @@ const styles = {
     width: '100%',
     height: '100%',
     pointerEvents: 'none',
+    objectFit: 'cover',
   },
   textOverlay: {
     position: 'relative',
@@ -122,29 +127,37 @@ const styles = {
     flexDirection: 'column',
     alignItems: 'center',
     gap: 4,
+    textShadow: '2px 2px 6px rgba(0, 0, 0, 0.7)', // ← ADD THIS
   },
+  
   titleText: {
     fontSize: '1.3rem',
     fontWeight: '700',
-    color: '#FFFFFF', // Gold/yellow for title
+    color: '#FFFFFF',
+    textShadow: '2px 2px 6px rgba(0, 0, 0, 0.7)', // ← ADD THIS
   },
+  
   companyText: {
     fontSize: '1.1rem',
-    fontWeight: '600',
-    color: '#00FFFF', // Cyan for company
+    fontWeight: '800',
+    color: '#95dffc',
+    textShadow: '2px 2px 6px rgba(0, 0, 0, 0.7)', // ← ADD THIS
   },
+  
   durationText: {
     fontSize: '0.9rem',
-    fontWeight: '500',
-    color: '#ADFF2F', // Green-yellow for duration
+    fontWeight: '700',
+    color: '#81c9e6',
+    textShadow: '2px 2px 6px rgba(0, 0, 0, 0.7)', // ← ADD THIS
   },
+  
   logo: {
-    width: 40,
+    // width: 60, // or 70
     height: 40,
     marginTop: 8,
-    borderRadius: 8,
+    borderRadius: 12,
     objectFit: 'contain',
-  },
+  },  
   modalOverlay: {
     position: 'fixed',
     inset: 0,
@@ -176,12 +189,24 @@ const styles = {
     pointerEvents: 'none',
     zIndex: 0,
   },
+  modalLogo: {
+    height: 60,
+    marginBottom: 20,
+    borderRadius: 8,
+    objectFit: 'contain',
+    display: 'block',
+    marginLeft: 'auto',
+    marginRight: 'auto',
+    zIndex: 1,
+    position: 'relative',
+  },
   modalTitle: {
     position: 'relative',
     zIndex: 1,
     fontSize: '2.5rem',
     marginBottom: '20px',
     color: '#fff',
+    textAlign: 'center',
   },
   modalDetails: {
     position: 'relative',

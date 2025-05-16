@@ -21,8 +21,10 @@ const WorkExperienceSection = () => {
         style={{
           fontSize: '3rem',
           marginBottom: '30px',
-          color: '#00e5ff',
+          color: '#92daf7',
           fontFamily: "'Montserrat', sans-serif",
+          textShadow: '2px 2px 6px rgba(0, 0, 0, 1)', // ← ADD THIS
+
         }}
       >
         Work Experience
