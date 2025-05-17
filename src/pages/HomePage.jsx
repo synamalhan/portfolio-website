@@ -12,6 +12,8 @@ import SunkenShipSection from '../components/hobbies/SunkenShipSection';
 
 import BubbleOverlay from '../components/common/BubbleOverlay';
 import ReefOverlay from '../components/common/ReefOverlay';
+import CrabOverlay from '../components/common/CrabOverlay';
+
 const HomePage = () => {
   return (
     <div style={{ position: 'relative', overflowX: 'hidden' }}>
@@ -25,6 +27,7 @@ const HomePage = () => {
       <SkillSection />
       <ContactSection />
       <SunkenShipSection />
+      <CrabOverlay />
     </div>
   );
 };

@@ -1,18 +1,25 @@
-import React, { useState } from 'react';
-import Lottie from 'lottie-react';
+import React, { useState, useEffect } from 'react';
 import ship from '../../assets/ship.webp';
-import crabJson from '../../assets/crab.json';
 
 const hobbies = [
   'Building Metal Earth Models',
-  'Swmming',
+  'Swimming',
   'Marine Life',
   'Coding'
 ];
 
 const FinalSection = () => {
   const [showHobbies, setShowHobbies] = useState(false);
-  const [showCrabMsg, setShowCrabMsg] = useState(false);
+  const [windowWidth, setWindowWidth] = useState(window.innerWidth);
+
+  useEffect(() => {
+    const handleResize = () => setWindowWidth(window.innerWidth);
+    window.addEventListener('resize', handleResize);
+
+    return () => window.removeEventListener('resize', handleResize);
+  }, []);
+
+  const isSmall = windowWidth < 768;
 
   return (
     <section
@@ -32,53 +39,7 @@ const FinalSection = () => {
         position: 'relative',
       }}
     >
-      {/* Crab Lottie Animation - Left */}
-      <div
-        onClick={() => {
-          setShowCrabMsg(!showCrabMsg);
-          // If you want to close hobbies bubble when crab clicked:
-          setShowHobbies(false);
-        }}
-        style={{
-          width: '160px',
-          height: '160px',
-          marginLeft: '30px',
-          opacity: 0.5,
-          filter: showCrabMsg ? 'hue-rotate(90deg)' : 'hue-rotate(250deg)',
-          transition: 'filter 0.5s ease',
-          cursor: 'pointer',
-          position: 'relative',
-          display: 'flex',
-          justifyContent: 'center',
-          alignItems: 'center',
-        }}
-      >
-        <Lottie animationData={crabJson} loop={true} />
-        {showCrabMsg && (
-          <div
-            style={{
-              position: 'absolute',
-              top: '-50px',
-              left: '50%',
-              transform: 'translateX(-50%)',
-              background: 'rgba(10, 62, 87, 0.9)',
-              padding: '8px 14px',
-              borderRadius: '12px',
-              fontSize: '1rem',
-              boxShadow: '0 0 15px rgba(74, 155, 220, 0.8)',
-              whiteSpace: 'nowrap',
-              color: '#92daf7',
-              userSelect: 'text',
-              pointerEvents: 'none',
-              zIndex: 10,
-            }}
-          >
-            Hope you had fun!
-          </div>
-        )}
-      </div>
-
-      {/* Centered Ship with hobby bubble to the right */}
+      {/* Centered Ship with hobby bubble */}
       <div
         style={{
           position: 'relative',
@@ -91,25 +52,31 @@ const FinalSection = () => {
           flexGrow: 1,
           maxWidth: '700px',
           justifyContent: 'flex-end',
+          marginLeft: '30px',
+          marginRight: '30px',
         }}
       >
         <img
           src={ship}
           alt="Ship"
-          style={{ height: '700px', objectFit: 'contain' , filter:'hue-rotate(190deg'}} // much larger ship
+          style={{
+            height: isSmall ? '300px' : '700px', // smaller on small screen
+            objectFit: 'contain',
+            filter: 'hue-rotate(190deg)',
+          }}
           onClick={() => {
             setShowHobbies(!showHobbies);
-            setShowCrabMsg(false);
           }}
         />
 
-        {/* Hobby bubble to the right */}
+        {/* Hobby bubble position changes on small screens */}
         {showHobbies && (
           <div
             style={{
               position: 'absolute',
-              bottom: '40px',
-              left: '105%', // position right of ship
+              bottom: isSmall ? '300px' : '100px',
+              left: isSmall ? '0%' : '100%',
+              transform: isSmall ? 'translateX(-100%) translateY(100)' : 'none',
               background: 'rgba(10, 62, 87, 0.95)',
               borderRadius: '15px',
               padding: '25px 35px',
@@ -164,8 +131,8 @@ const FinalSection = () => {
         )}
       </div>
 
-      {/* Empty space on right to balance crab on left */}
-      <div style={{ width: '160px', marginRight: '30px' }} />
+      {/* Empty space on right to balance left (reduced on small screens) */}
+      <div style={{ width: isSmall ? '40px' : '160px', marginRight: isSmall ? '10px' : '30px' }} />
 
       <style>
         {`
