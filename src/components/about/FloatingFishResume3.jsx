@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import Lottie from 'lottie-react';
 import fishAnimation from '../../assets/fish.json';
 
@@ -43,11 +43,14 @@ const FloatingFishResume3 = () => {
   );
 };
 
+const isSmallScreen = window.innerWidth < 500;
+
 const styles = {
   container: {
     position: 'relative',
     width: '400px',      // smaller size
-    margin: '20px',
+    margin: isSmallScreen? '0px':'20px',
+    marginTop: '40px',
     cursor: 'pointer',
     userSelect: 'none',
     outline: 'none',

@@ -47,9 +47,9 @@ const FloatingFishResume = () => {
 const styles = {
   container: {
     position: 'relative',
-    width: '400px',
+    width: '350px',
     height: '400px',
-    margin: '20px',
+    // margin: '20px',
     cursor: 'pointer',
     userSelect: 'none',
     outline: 'none',

@@ -38,7 +38,7 @@ const CrabOverlay = () => {
           position: 'fixed',
           bottom: isSmallScreen ? '0px' : 'auto',
           top: isSmallScreen ? 'auto' : topPosition,
-          right: isSmallScreen ? '0px' : 'auto',
+          right: isSmallScreen ? '0px' : '0px',
           width: isSmallScreen ? '100px':'160px',
           height: isSmallScreen ? '100px':'160px',
           cursor: 'pointer',

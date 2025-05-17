@@ -47,7 +47,7 @@ const styles = {
   container: {
     position: 'relative',
     width: '400px',      // smaller size
-    margin: '20px',
+    marginBottom: '100px',
     cursor: 'pointer',
     userSelect: 'none',
     outline: 'none',

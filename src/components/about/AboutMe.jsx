@@ -53,7 +53,7 @@ const AboutMe = () => {
           ...styles.textContainer,
           justifyContent: 'center',
           textAlign: 'center',
-          maxWidth: isMobile ? '100%' : '600px',
+          maxWidth: isMobile ? '100%' : '500px',
         }}
       >
         <h2 style={{ ...styles.title, fontSize: fontSizeTitle }}>
@@ -79,10 +79,19 @@ const AboutMe = () => {
 
         {/* On mobile, show an additional floating fish near where button would be */}
         {isMobile && (
-          <div style={{ marginTop: 0, display: 'flex', justifyContent: 'center' }}>
-            <FloatingFishResume size={50} />
-          </div>
-        )}
+  <div style={{ 
+    marginTop: 0, 
+    display: 'flex', 
+    justifyContent: 'center', 
+    // gap: '10px',  // spacing between fishes
+    alignItems: 'center',
+  }}>
+    <FloatingFishResume size={40} />
+    <FloatingFishResume4 size={40} />
+    <FloatingFishResume3 size={40} />
+  </div>
+)}
+
       </div>
 
       {/* Right fish column - only on larger screens */}
