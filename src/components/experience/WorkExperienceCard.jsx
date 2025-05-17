@@ -101,8 +101,8 @@ const WorkExperienceCard = ({ title, company, duration, summary, details, logo }
 const styles = {
   card: {
     position: 'relative',
-    width: 350,
-    height: 350,
+    width: 300,
+    height: 300,
     margin: 20,
     cursor: 'pointer',
     borderRadius: 20,
