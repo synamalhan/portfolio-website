@@ -19,6 +19,7 @@ const ProjectSection = () => {
       <h2
         style={{
           fontSize: '3rem',
+          marginTop: '100px',
           marginBottom: '30px',
           color: '#92daf7',
           fontFamily: "'Montserrat', sans-serif",

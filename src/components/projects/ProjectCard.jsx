@@ -94,7 +94,7 @@ const ProjectCard = ({ title, description, details, image, links }) => {
             <button onClick={() => setModalOpen(false)} style={styles.closeButton} aria-label="Close modal">
               <X size={24} />
             </button>
-            <img src={image} alt="Project" style={styles.modalLogo} />
+            {image && <img src={image} alt="Project" style={styles.modalLogo} />}
             <h2 style={styles.modalTitle}>{title}</h2>
             <p style={styles.modalDescription}>{description}</p>
             <div style={styles.modalDetails}>{details}</div>

@@ -4,6 +4,15 @@ import ProjectCard from './ProjectCard';
 import PF1 from "../../assets/projects/PF1.jpeg";
 import LPD1 from "../../assets/projects/LPD1.jpeg";
 import CG from "../../assets/projects/CG.png";
+import BF from "../../assets/projects/BF.png";
+import SS from "../../assets/projects/SS.png";
+import OCR from "../../assets/projects/OCR.png";
+import WL from "../../assets/projects/WL.png";
+import MX from "../../assets/projects/MX.png";
+import OP from "../../assets/projects/OP.png";
+import PA from "../../assets/projects/PA.png";
+import ED from "../../assets/projects/ED.png";
+
 
 const projects = [
   {
@@ -26,6 +35,8 @@ const projects = [
       { label: 'GitHub Repo', url: 'https://github.com/synamalhan/dispatch_optimization_FG_forecasting' },
       ],
     },
+
+
     {
     title: 'Plate Mill FG Forecasting',
     summary: 'Deployed predictive models to forecast finished goods, improving dispatch planning.',
@@ -46,6 +57,8 @@ const projects = [
       </>
     ),
   },
+
+
   {
     title: 'CropGenius',
     summary: 'Developed CropGenius to provide 100% accurate crop recommendations using XGBoost and Random Forest.',
@@ -66,6 +79,25 @@ const projects = [
       { label: 'GitHub Repo', url: 'https://github.com/synamalhan/ai-crop-optimizer' },
       { label: 'Demo', url: 'https://youtu.be/030IplDlcBU' },],
   },
+
+  {
+    title: 'Blast Furnace Lab Automation',
+    summary: 'Developed a full-stack web portal to automate and streamline lab processes, improving data management and operational efficiency.',
+    duration: 'Add project duration here',
+    techStack: ['AngularJS', 'Spring Boot', 'SQL', 'Apache Tomcat'],
+    details: (
+      <>
+        <p><strong>Situation:</strong> Lab processes in a blast furnace environment were manual and fragmented, causing inefficiencies.</p>
+        <p><strong>Problem:</strong> Lack of centralized data management and real-time connectivity across lab operations.</p>
+        <p><strong>Action:</strong> Built a comprehensive web portal using AngularJS and Spring Boot, integrated multiple lab workflows, and deployed on scalable cloud platforms.</p>
+        <p><strong>Result:</strong> Improved operational efficiency, centralized data access, and enabled scalable, high-performance lab automation.</p>
+        <p><strong>What I Learned:</strong> Full-stack web development for industrial applications, system integration, scalable backend architecture, and the importance of collaboration and rigorous testing.</p>
+      </>
+    ),
+    images: BF,
+  },
+  
+
   {
     title: 'Slab Sizing',
     summary: 'Optimized computer vision algorithms using YOLO, increasing measurement accuracy by 80%.',
@@ -81,11 +113,10 @@ const projects = [
         <p><strong>Tech Stack:</strong> YOLO, Ultralytics, Python, FastSAM</p>
       </>
     ),
-    images:LPD1,
-    links:[
-      { label: 'GitHub Repo', url: 'https://github.com/username/ocean-data-visualizer' },
-      { label: 'Live Demo', url: 'https://ocean-visualizer.vercel.app' },],
+    images:SS,
   },
+
+
   {
     title: 'Options Pricing and Risk Assessment Tool',
     summary: 'Developed financial tool to calculate option pricing using Monte Carlo simulations and Black-Scholes.',
@@ -101,10 +132,10 @@ const projects = [
         <p><strong>Tech Stack:</strong> Python, Monte Carlo, Black-Scholes, Streamlit</p>
       </>
     ),
-    images:LPD1,
+    images:OP,
     links:[
-      { label: 'GitHub Repo', url: 'https://github.com/username/ocean-data-visualizer' },
-      { label: 'Live Demo', url: 'https://ocean-visualizer.vercel.app' },],
+      { label: 'GitHub Repo', url: 'https://github.com/synamalhan/option-pricing.git' },
+      { label: 'Demo', url: 'https://youtu.be/HZKh0vNGbHU' },],
   },
   {
     title: 'Wildlife Monitoring and Conservation',
@@ -121,10 +152,8 @@ const projects = [
         <p><strong>Tech Stack:</strong> YOLO, Faster R-CNN, SAM, FastSAM, Python</p>
       </>
     ),
-    images:LPD1,
-    links:[
-      { label: 'GitHub Repo', url: 'https://github.com/username/ocean-data-visualizer' },
-      { label: 'Live Demo', url: 'https://ocean-visualizer.vercel.app' },],
+    images:WL,
+    
   },
   {
     title: 'Medical Image Analysis for Early Disease Detection',
@@ -141,10 +170,8 @@ const projects = [
         <p><strong>Tech Stack:</strong> TensorFlow, Keras, U-Net, ResNet, VGG</p>
       </>
     ),
-    images:LPD1,
-    links:[
-      { label: 'GitHub Repo', url: 'https://github.com/username/ocean-data-visualizer' },
-      { label: 'Live Demo', url: 'https://ocean-visualizer.vercel.app' },],
+    images:MX,
+  
   },
   {
     title: 'Portfolio Analyzer and Stock Prediction Dashboard',
@@ -161,10 +188,10 @@ const projects = [
         <p><strong>Tech Stack:</strong> Python, Streamlit, LSTM, Random Forest, Plotly</p>
       </>
     ),
-    images:LPD1,
+    images:PA,
     links:[
-      { label: 'GitHub Repo', url: 'https://github.com/username/ocean-data-visualizer' },
-      { label: 'Live Demo', url: 'https://ocean-visualizer.vercel.app' },],
+      { label: 'GitHub Repo', url: 'https://github.com/synamalhan/stock_pred.git' },
+      { label: 'Demo', url: 'https://youtu.be/BNgE11T8JC0' },],
   },
   {
     title: 'OCR Training',
@@ -181,10 +208,7 @@ const projects = [
         <p><strong>Tech Stack:</strong> Python, Donut Model, AWS OCR, Azure OCR</p>
       </>
     ),
-    images:LPD1,
-    links:[
-      { label: 'GitHub Repo', url: 'https://github.com/username/ocean-data-visualizer' },
-      { label: 'Live Demo', url: 'https://ocean-visualizer.vercel.app' },],
+    images:OCR,
   },
   {
     title: 'Emotion Detection from Images',
@@ -201,10 +225,128 @@ const projects = [
         <p><strong>Tech Stack:</strong> Hugging Face, RoBERTa, Python, Streamlit</p>
       </>
     ),
-    images:LPD1,
+    images:ED,
     links:[
-      { label: 'GitHub Repo', url: 'https://github.com/username/ocean-data-visualizer' },
-      { label: 'Live Demo', url: 'https://ocean-visualizer.vercel.app' },],
+      { label: 'GitHub Repo', url: 'https://github.com/synamalhan/emotion-detect.git' },
+      { label: 'Demo', url: 'https://youtu.be/bKAJgkphZus?si=04CCDq-yPc_1qBbv' },],
+  },
+  {
+    title: 'Front-end Portal',
+    summary: 'Built a React portal with reusable components, dynamic filters, and video previews, integrated with REST APIs and deployed on AWS Amplify.',
+    duration: 'Add duration here',
+    techStack: ['React', 'AWS Amplify', 'REST API', 'JavaScript', 'CSS'],
+    details: (
+      <>
+        <p><strong>Situation:</strong> Needed a scalable portal with rich UX features for data display and video previews.</p>
+        <p><strong>Problem:</strong> Existing solutions lacked dynamic filtering and efficient video integration.</p>
+        <p><strong>Action:</strong> Developed custom React components, integrated multiple REST endpoints, and deployed on AWS Amplify.</p>
+        <p><strong>Result:</strong> Improved user engagement with dynamic data visualization and faster video access.</p>
+        <p><strong>What I Learned:</strong> Advanced React component design, API integration, and AWS Amplify deployment.</p>
+        <p><strong>Tech Stack:</strong> React, AWS Amplify, REST API</p>
+      </>
+    ),
+  },
+
+  {
+    title: 'Specialized Chatbot',
+    summary: 'Created a React-based chatbot integrated with AWS Amplify and Cognito, with admin flow for DB management and analytics.',
+    duration: 'Add duration here',
+    techStack: ['React', 'AWS Amplify', 'AWS Cognito', 'AWS Chatbot'],
+    details: (
+      <>
+        <p><strong>Situation:</strong> Needed an intelligent chatbot for customer interaction with admin controls.</p>
+        <p><strong>Problem:</strong> Lack of easy admin interface to manage chatbot data and monitor usage analytics.</p>
+        <p><strong>Action:</strong> Built chatbot frontend with React and AWS Amplify, implemented Cognito authentication, and created admin flows.</p>
+        <p><strong>Result:</strong> Enabled seamless user-chatbot interaction and real-time analytics monitoring.</p>
+        <p><strong>What I Learned:</strong> AWS Amplify authentication, chatbot integration, and admin dashboard design.</p>
+        <p><strong>Tech Stack:</strong> React, AWS Amplify, AWS Cognito</p>
+      </>
+    ),
+  },
+
+  {
+    title: 'Chatbot Referral Agent',
+    summary: 'Developed a referral chatbot in React with AWS Amplify and Cognito, including an admin portal for referral and data management.',
+    duration: 'Add duration here',
+    techStack: ['React', 'AWS Amplify', 'AWS Cognito', 'AWS Chatbot'],
+    details: (
+      <>
+        <p><strong>Situation:</strong> Needed a chatbot for referral collection and tracking.</p>
+        <p><strong>Problem:</strong> No scalable solution for referral data management and analytics.</p>
+        <p><strong>Action:</strong> Built React chatbot with Cognito authentication, created admin portal for referral tracking and analytics.</p>
+        <p><strong>Result:</strong> Streamlined referral process with secure data handling and insight generation.</p>
+        <p><strong>What I Learned:</strong> Integration of authentication, chatbot UI, and backend analytics.</p>
+        <p><strong>Tech Stack:</strong> React, AWS Amplify, AWS Cognito</p>
+      </>
+    ),
+  },
+
+  {
+    title: 'Content Censoring Solution',
+    summary: 'Implemented NLP-based content filtering for text, audio, and video using speech-to-text and Python backend for automated moderation.',
+    duration: 'Add duration here',
+    techStack: ['Python', 'NLP', 'Speech-to-Text APIs', 'Flask/Django'],
+    details: (
+      <>
+        <p><strong>Situation:</strong> Needed to automatically moderate user-generated content across multiple media types.</p>
+        <p><strong>Problem:</strong> Manual moderation was slow and inconsistent.</p>
+        <p><strong>Action:</strong> Developed backend with speech-to-text for audio/video, text NLP filters, and customizable rules.</p>
+        <p><strong>Result:</strong> Enabled scalable, consistent content moderation with configurable censoring.</p>
+        <p><strong>What I Learned:</strong> NLP techniques, audio processing, and building flexible moderation pipelines.</p>
+        <p><strong>Tech Stack:</strong> Python, NLP, Speech-to-Text APIs</p>
+      </>
+    ),
+  },
+
+  {
+    title: 'Portfolio Performance Analyzer',
+    summary: 'Built a Streamlit app to input, validate, and visualize stock portfolios with risk-return plots and sector allocation.',
+    duration: 'Add duration here',
+    techStack: ['Python', 'Streamlit', 'yFinance API', 'Plotly'],
+    details: (
+      <>
+        <p><strong>Situation:</strong> Investors needed a simple tool for portfolio performance visualization.</p>
+        <p><strong>Problem:</strong> Lack of interactive, easy-to-use portfolio analysis tools.</p>
+        <p><strong>Action:</strong> Developed Streamlit dashboard with CSV/manual input, integrated yFinance, and interactive Plotly charts.</p>
+        <p><strong>Result:</strong> Improved user insights into portfolio risk, returns, and sector exposures.</p>
+        <p><strong>What I Learned:</strong> API integration, interactive visualization, and Streamlit app deployment.</p>
+        <p><strong>Tech Stack:</strong> Python, Streamlit, yFinance, Plotly</p>
+      </>
+    ),
+  },
+
+  {
+    title: 'Customer Segmentation via K-Means',
+    summary: 'Applied K-Means clustering on mall customer data to identify marketing segments, visualized clusters with Matplotlib and Plotly.',
+    duration: 'Add duration here',
+    techStack: ['Python', 'K-Means Clustering', 'Matplotlib', 'Seaborn', 'Plotly'],
+    details: (
+      <>
+        <p><strong>Situation:</strong> Marketing team needed to segment customers for targeted campaigns.</p>
+        <p><strong>Problem:</strong> Existing segmentation was manual and imprecise.</p>
+        <p><strong>Action:</strong> Used K-Means clustering, elbow method for optimal clusters, and generated cluster visualizations.</p>
+        <p><strong>Result:</strong> Enhanced targeted marketing strategies and campaign ROI.</p>
+        <p><strong>What I Learned:</strong> Clustering algorithms, cluster evaluation methods, and visualization best practices.</p>
+        <p><strong>Tech Stack:</strong> Python, K-Means, Matplotlib, Seaborn, Plotly</p>
+      </>
+    ),
+  },
+
+  {
+    title: 'Portfolio Optimizer with ESG Integration',
+    summary: 'Created a Streamlit app for portfolio optimization under ESG score constraints with interactive visualizations and modern portfolio theory.',
+    duration: 'Add duration here',
+    techStack: ['Python', 'Streamlit', 'Pandas', 'NumPy', 'ESG Data'],
+    details: (
+      <>
+        <p><strong>Situation:</strong> Investors wanted to optimize portfolios balancing financial returns and ESG scores.</p>
+        <p><strong>Problem:</strong> No simple tools to incorporate ESG constraints in portfolio optimization.</p>
+        <p><strong>Action:</strong> Developed an app to input portfolios, fetch historical data, optimize using mean-variance, and visualize results.</p>
+        <p><strong>Result:</strong> Enabled sustainable investing with quantified risk-return tradeoffs.</p>
+        <p><strong>What I Learned:</strong> Portfolio theory application, ESG data integration, and UI for complex financial modeling.</p>
+        <p><strong>Tech Stack:</strong> Python, Streamlit, Pandas, NumPy</p>
+      </>
+    ),
   },
 ];
 

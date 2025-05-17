@@ -1,11 +1,9 @@
 import React, { useState } from 'react';
-import submarine from '../../assets/submarine.jpeg';
+import emailjs from 'emailjs-com';
+import { EMAILJS_SERVICE_ID, EMAILJS_TEMPLATE_ID, EMAILJS_PUBLIC_KEY } from './keys'; // Adjust path
 import linkedinIcon from '../../assets/linkedin.webp';
-import xIcon from '../../assets/x.png';
-import githubIcon from '../../assets/github.png'
-const openEmailClient = () => {
-  window.location.href = 'mailto:synamalhan22@gmail.com';
-};
+import githubIcon from '../../assets/github.png';
+import gmailIcon from '../../assets/gmail.png';
 
 const socialMedia = [
   {
@@ -20,12 +18,12 @@ const socialMedia = [
     icon: githubIcon,
     color: '#000000',
   },
-  // {
-  //   name: 'X',
-  //   url: 'https://x.com/yourprofile',
-  //   icon: xIcon,
-  //   color: '#000000',
-  // },
+  {
+    name: 'Email',
+    url: 'mailto:synamalhan22@gmail.com',
+    icon: gmailIcon,
+    color: '#ffffff',
+  },
 ];
 
 const blobStyle = (color) => ({
@@ -39,12 +37,16 @@ const blobStyle = (color) => ({
   alignItems: 'center',
   justifyContent: 'center',
   padding: '10px',
-  boxShadow: '0 0 15px rgba(0,0,0,0.4)',
+  boxShadow: color === '#ffffff' ? '0 0 15px rgba(0,0,0,0.4)' : '0 0 15px rgba(0,0,0,0.4)',
   transition: 'transform 0.3s ease-in-out',
+  cursor: 'pointer',
 });
 
 const ContactSection = () => {
   const [formData, setFormData] = useState({ name: '', email: '', message: '' });
+  const [sending, setSending] = useState(false);
+  const [sent, setSent] = useState(false);
+  const [error, setError] = useState(null);
 
   const handleChange = (e) => {
     const { name, value } = e.target;
@@ -53,11 +55,27 @@ const ContactSection = () => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
+    setSending(true);
+    setError(null);
 
-    const subject = `New message from ${formData.name}`;
-    const body = `Name: ${formData.name}%0D%0AEmail: ${formData.email}%0D%0A%0D%0A${formData.message}`;
+    const templateParams = {
+      from_name: formData.name,
+      from_email: formData.email,
+      message: formData.message,
+    };
 
-    window.location.href = `mailto:synamalhan22@gmail.com?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
+    emailjs
+      .send(EMAILJS_SERVICE_ID, EMAILJS_TEMPLATE_ID, templateParams, EMAILJS_PUBLIC_KEY)
+      .then(() => {
+        setSending(false);
+        setSent(true);
+        setFormData({ name: '', email: '', message: '' });
+      })
+      .catch((err) => {
+        setSending(false);
+        setError('Failed to send message. Please try again later.');
+        console.error('EmailJS error:', err);
+      });
   };
 
   return (
@@ -108,6 +126,7 @@ const ContactSection = () => {
           onChange={handleChange}
           required
           style={inputStyle}
+          disabled={sending}
         />
         <input
           name="email"
@@ -117,6 +136,7 @@ const ContactSection = () => {
           onChange={handleChange}
           required
           style={inputStyle}
+          disabled={sending}
         />
         <textarea
           name="message"
@@ -126,6 +146,7 @@ const ContactSection = () => {
           onChange={handleChange}
           required
           style={{ ...inputStyle, resize: 'none' }}
+          disabled={sending}
         />
         <button
           type="submit"
@@ -136,13 +157,16 @@ const ContactSection = () => {
             fontWeight: 'bold',
             borderRadius: '8px',
             border: 'none',
-            cursor: 'pointer',
+            cursor: sending ? 'not-allowed' : 'pointer',
             boxShadow: '0 0 10px rgba(146, 218, 247, 0.5)',
             transition: 'all 0.2s ease-in-out',
           }}
+          disabled={sending}
         >
-          Send Message
+          {sending ? 'Sending...' : 'Send Message'}
         </button>
+        {sent && <p style={{ color: '#92daf7' }}>Message sent successfully! 🎉</p>}
+        {error && <p style={{ color: '#ff6b6b' }}>{error}</p>}
       </form>
 
       {/* Social Media Blobs */}
@@ -161,6 +185,7 @@ const ContactSection = () => {
             target="_blank"
             rel="noopener noreferrer"
             style={{ textDecoration: 'none' }}
+            aria-label={media.name}
           >
             <div style={blobStyle(media.color)}>
               <img
