@@ -17,7 +17,6 @@ const AboutMe = () => {
   const isMobile = windowWidth < 480; // really small
   const isSmall = windowWidth < 768; // tablet/small screen
 
-  // Smaller font sizes for mobile
   const fontSizeTitle = isMobile ? '2rem' : '3rem';
   const fontSizeText = isMobile ? '1rem' : '1.25rem';
   const lineHeightText = isMobile ? '1.4' : '1.6';
@@ -73,23 +72,15 @@ const AboutMe = () => {
           Outside the world of tech, I’m endlessly inspired by marine life — the colors, movement, and mysteries of the ocean often find their way into my creative process. This portfolio is a reflection of both my technical journey and my love for nature’s quiet intelligence.
           <br />
           <br />
-          {!isMobile && (
-  <span style={styles.resumeHint}>
-    🐠 P.S. If you're looking for my resume... you'll have to ask the fishes swimming around this section!
-  </span>
-)}
+          <span style={styles.resumeHint}>
+            🐠 P.S. If you're looking for my resume... you'll have to ask the fishes swimming around this section!
+          </span>
         </p>
 
-        {/* On mobile, show Download Resume button below text */}
+        {/* On mobile, show an additional floating fish near where button would be */}
         {isMobile && (
-          <div style={{ marginTop: 30, display: 'flex', justifyContent: 'center' }}>
-            <a
-              href="/path-to-your-resume.pdf" // Replace with actual path or URL
-              download
-              style={styles.downloadButton}
-            >
-              Download Resume
-            </a>
+          <div style={{ marginTop: 0, display: 'flex', justifyContent: 'center' }}>
+            <FloatingFishResume size={50} />
           </div>
         )}
       </div>
@@ -125,25 +116,10 @@ const styles = {
     color: '#00e5ff',
     textShadow: '2px 2px 6px rgba(0,0,0,1)',
   },
-  text: {
-    // fontSize and lineHeight now dynamic
-  },
+  text: {},
   resumeHint: {
     fontStyle: 'italic',
     opacity: 0.8,
-  },
-  downloadButton: {
-    padding: '10px 25px',
-    backgroundColor: '#00e5ff',
-    color: '#004466',
-    fontWeight: 'bold',
-    borderRadius: '5px',
-    textDecoration: 'none',
-    boxShadow: '0 2px 6px rgba(0, 229, 255, 0.7)',
-    transition: 'background-color 0.3s ease',
-  },
-  downloadButtonHover: {
-    backgroundColor: '#00b8cc',
   },
   leftFishContainer: {
     position: 'relative',

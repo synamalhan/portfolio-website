@@ -1,4 +1,4 @@
-import React, { useState, useMemo } from 'react';
+import React, { useState, useMemo , useEffect} from 'react';
 import Lottie from 'lottie-react';
 import jellyfishGif from '../../assets/jellyfish.gif';
 import { X } from 'lucide-react';
@@ -18,6 +18,13 @@ const blobPath = `M120,-132.6C159.2,-109.4,190.9,-71.4,191.8,-30.3C192.7,10.7,16
 const ProjectCard = ({ title, description, details, image, links }) => {
   const [modalOpen, setModalOpen] = useState(false);
   const [isHovered, setIsHovered] = useState(false); // Track hover state
+  const [isSmallScreen, setIsSmallScreen] = useState(window.innerWidth < 600);
+
+  useEffect(() => {
+  const handleResize = () => setIsSmallScreen(window.innerWidth < 600);
+  window.addEventListener('resize', handleResize);
+  return () => window.removeEventListener('resize', handleResize);
+  }, []);
 
   const { color: blobFillColor, filter: lottieFilter } = useMemo(() => {
     const idx = Math.floor(Math.random() * huesWithFilters.length);
@@ -38,6 +45,7 @@ const ProjectCard = ({ title, description, details, image, links }) => {
     </svg>
   );
 
+  
   return (
     <>
       <div
@@ -55,12 +63,12 @@ const ProjectCard = ({ title, description, details, image, links }) => {
         onKeyPress={(e) => {
           if (e.key === 'Enter') setModalOpen(true);
         }}
-      >
+        >
         <img
           src={jellyfishGif}
           alt="Animated background"
           style={{ ...styles.lottie, filter: lottieFilter, opacity: 0.8 }}
-        />
+          />
 
         <div style={styles.textOverlay}>
           <div style={styles.titleText}>{title}</div>
@@ -73,14 +81,14 @@ const ProjectCard = ({ title, description, details, image, links }) => {
             <div style={{ ...styles.blobWrapper }}>
               {[...Array(3)].map((_, i) => (
                 <div
-                  key={i}
-                  style={{
-                    ...styles.blobBackground,
-                    top: -100 + i * 50,
-                    left: -100 + i * 80,
-                    transform: `scale(${1 - i * 0.2}) rotate(${i * 20}deg)`,
-                    filter: modalHue.filter,
-                  }}
+                key={i}
+                style={{
+                  ...styles.blobBackground,
+                  top: -100 + i * 50,
+                  left: -100 + i * 80,
+                  transform: `scale(${1 - i * 0.2}) rotate(${i * 20}deg)`,
+                  filter: modalHue.filter,
+                }}
                 >
                   <svg viewBox="0 0 600 600" xmlns="http://www.w3.org/2000/svg" style={{ width: '100%', height: '100%' }}>
                     <g transform="translate(300,300)">
@@ -119,28 +127,32 @@ const ProjectCard = ({ title, description, details, image, links }) => {
   );
 };
 
+const isSmallScreen = window.innerWidth < 500;
+
 const styles = {
   card: {
     position: 'relative',
-    width: 300,
-    height: 300,
-    margin: 20,
+    width: isSmallScreen ? 150 : 300,
+    height: isSmallScreen ? 150 : 300,
+    margin: isSmallScreen ? 0 : 20,
     cursor: 'pointer',
-    borderRadius: 80,
+    borderRadius: isSmallScreen ? 50 : 80,
     overflow: 'hidden',
     display: 'flex',
     justifyContent: 'center',
     alignItems: 'center',
   },
+  
   lottie: {
     position: 'absolute',
     width: '100%',
     height: '100%',
     pointerEvents: 'none',
-    objectFit: 'cover',
+    objectFit: isSmallScreen ? 'contain' : 'cover',
     top: 0,
     left: 0,
   },
+  
   blobWrapper: {
     position: 'absolute',
     inset: 0,
@@ -160,10 +172,11 @@ const styles = {
     textShadow: '2px 2px 6px rgba(0,0,0,0.7)',
   },
   titleText: {
-    fontSize: '1.3rem',
+    fontSize: isSmallScreen ? '0.9rem' : '1.3rem',
     fontWeight: '700',
     color: '#FFFFFF',
   },
+  
   descText: {
     fontSize: '1.05rem',
     fontWeight: '500',

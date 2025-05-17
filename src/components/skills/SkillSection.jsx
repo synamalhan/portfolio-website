@@ -43,63 +43,78 @@ const skills = [
     
   ];
   
-const getRandomTransform = () => {
-  const rotate = Math.floor(Math.random() * 10 - 5); // -5deg to 5deg
-  const translateX = Math.floor(Math.random() * 10 - 5); // px
-  const translateY = Math.floor(Math.random() * 10 - 5);
-  return `rotate(${rotate}deg) translate(${translateX}px, ${translateY}px)`;
-};
-
-const SkillSection = () => {
-  return (
-    <section
-      id="skills"
-      style={{
-        background: 'linear-gradient(180deg, #00171c 0%, #00141a 100%)',
-        minHeight: '100vh',
-        padding: '40px 20px',
-        display: 'flex',
-        flexDirection: 'column',
-        alignItems: 'center',
-        color: '#a0d8ef',
-        fontFamily: "'Montserrat', sans-serif",
-      }}
-    >
-      <h2
+  const getRandomTransform = () => {
+    const rotate = Math.floor(Math.random() * 10 - 5);
+    const translateX = Math.floor(Math.random() * 10 - 5);
+    const translateY = Math.floor(Math.random() * 10 - 5);
+    return `rotate(${rotate}deg) translate(${translateX}px, ${translateY}px)`;
+  };
+  
+  const SkillSection = () => {
+    return (
+      <section
+        id="skills"
         style={{
-          fontSize: '3rem',
-          marginBottom: '30px',
-          color: '#92daf7',
-          textShadow: '2px 2px 6px rgba(128, 128, 128, 0.8)',
-        }}
-      >
-        Skills
-      </h2>
-
-      <div
-        style={{
+          background: 'linear-gradient(180deg, #00171c 0%, #00141a 100%)',
+          minHeight: '100vh',
+          padding: '40px 20px',
           display: 'flex',
-          flexWrap: 'wrap',
-          justifyContent: 'center',
-          gap: '30px',
-          maxWidth: '1000px',
-          width: '100%',
+          flexDirection: 'column',
+          alignItems: 'center',
+          color: '#a0d8ef',
+          fontFamily: "'Montserrat', sans-serif",
         }}
       >
-        {skills.map((item, index) => (
-          <div
-            key={index}
-            style={{
-              transform: getRandomTransform(),
-              transition: 'transform 0.3s ease-in-out',
-            }}
-          >
-            <SkillCard skill={item.skill} level={item.level} />
-          </div>
-        ))}
-      </div>
-    </section>
-  );
-};
-
-export default SkillSection;
+        <h2
+          style={{
+            fontSize: '3rem',
+            marginBottom: '30px',
+            color: '#92daf7',
+            textShadow: '2px 2px 6px rgba(128, 128, 128, 0.8)',
+          }}
+        >
+          Skills
+        </h2>
+  
+        <div
+          style={{
+            display: 'flex',
+            flexWrap: 'wrap',
+            justifyContent: 'center',
+            gap: '30px',
+            maxWidth: '1000px',
+            width: '100%',
+          }}
+        >
+          {skills.map((item, index) => (
+            <div
+              key={index}
+              style={{
+                transform: getRandomTransform(),
+                transition: 'transform 0.3s ease-in-out',
+              }}
+            >
+              <SkillCard skill={item.skill} level={item.level} />
+            </div>
+          ))}
+        </div>
+  
+        <style>{`
+          @media (max-width: 600px) {
+            #skills {
+              padding: 20px 10px !important;
+            }
+            #skills h2 {
+              font-size: 2rem !important;
+              margin-bottom: 20px !important;
+            }
+            #skills > div {
+              gap: 16px !important;
+            }
+          }
+        `}</style>
+      </section>
+    );
+  };
+  
+  export default SkillSection;

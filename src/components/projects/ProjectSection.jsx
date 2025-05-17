@@ -1,7 +1,20 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import ProjectList from './ProjectList';
 
 const ProjectSection = () => {
+  const [windowWidth, setWindowWidth] = useState(window.innerWidth);
+
+  useEffect(() => {
+    const handleResize = () => setWindowWidth(window.innerWidth);
+    window.addEventListener('resize', handleResize);
+    return () => window.removeEventListener('resize', handleResize);
+  }, []);
+
+  const isMobile = windowWidth < 480;
+  const isSmall = windowWidth < 768;
+
+  const fontSizeTitle = isMobile ? '2rem' : isSmall ? '2.5rem' : '3rem';
+
   return (
     <section
       id="projects"
@@ -18,12 +31,14 @@ const ProjectSection = () => {
     >
       <h2
         style={{
-          fontSize: '3rem',
+          fontSize: fontSizeTitle,
           marginTop: '100px',
           marginBottom: '30px',
           color: '#92daf7',
           fontFamily: "'Montserrat', sans-serif",
-          textShadow: '2px 2px 6px rgba(128, 128, 128, 0.8)',
+          textShadow: '2px 2px 6px rgba(128, 128, 128, 0.8)',          
+          textAlign: 'center',
+
         }}
       >
         Projects

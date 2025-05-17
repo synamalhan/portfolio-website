@@ -2,6 +2,7 @@ import React, { useState, useMemo } from 'react';
 import Lottie from 'lottie-react';
 import bubbleAnimation from '../../assets/bubblesnew.json';
 import bubblesGif from '../../assets/bubbles.gif';
+import { X } from 'lucide-react';
 
 const huesWithFilters = [
   { color: 'hsl(210, 70%, 60%)', filter: 'hue-rotate(0deg) ' },
@@ -78,31 +79,35 @@ const WorkExperienceCard = ({ title, company, duration, summary, details, logo }
             aria-labelledby="modal-title"
           >
             <div style={styles.blobBackground}>{blobSvg}</div>
+            <button onClick={() => setModalOpen(false)} style={styles.closeButton} aria-label="Close modal">
+              <X size={24} />
+            </button>
             <img src={logo} alt="Modal Logo" style={styles.modalLogo} />
             <h2 id="modal-title" style={styles.modalTitle}>{title}</h2>
             <p style={{ fontSize: '1.1rem', fontWeight: '500', marginBottom: '15px', color: '#d0e8ff' }}>
               {summary}
             </p>
             <div style={styles.modalDetails}>{details}</div>
-            <button
+            {/* <button
               onClick={() => setModalOpen(false)}
               style={styles.closeButton}
               aria-label="Close modal"
             >
               Close
-            </button>
+            </button> */}
           </div>
         </div>
       )}
     </>
   );
 };
+const isSmallScreen = window.innerWidth < 500;
 
 const styles = {
   card: {
     position: 'relative',
-    width: 300,
-    height: 300,
+    width: isSmallScreen ? 200 : 300,
+    height: isSmallScreen ? 200 : 300,
     margin: 20,
     cursor: 'pointer',
     borderRadius: 20,
@@ -113,13 +118,14 @@ const styles = {
   },
   lottie: {
     position: 'absolute',
-    top: 0,
-    left: 0,
     width: '100%',
     height: '100%',
     pointerEvents: 'none',
-    objectFit: 'cover',
+    objectFit: isSmallScreen ? 'contain' : 'cover',
+    top: 0,
+    left: 0,
   },
+  
   textOverlay: {
     position: 'relative',
     zIndex: 1,
@@ -134,21 +140,21 @@ const styles = {
   },
   
   titleText: {
-    fontSize: '1.3rem',
+    fontSize: isSmallScreen ? '1rem':'1.3rem',
     fontWeight: '700',
     color: '#FFFFFF',
     textShadow: '2px 2px 6px rgba(0, 0, 0, 0.7)', // ← ADD THIS
   },
   
   companyText: {
-    fontSize: '1.1rem',
+    fontSize: isSmallScreen ? '0.8rem' : '1.1rem',
     fontWeight: '800',
     color: '#95dffc',
     textShadow: '2px 2px 6px rgba(0, 0, 0, 0.7)', // ← ADD THIS
   },
   
   durationText: {
-    fontSize: '0.9rem',
+    fontSize: isSmallScreen ? '0.5rem':'0.9rem',
     fontWeight: '700',
     color: '#81c9e6',
     textShadow: '2px 2px 6px rgba(0, 0, 0, 0.7)', // ← ADD THIS
@@ -156,7 +162,7 @@ const styles = {
   
   logo: {
     // width: 60, // or 70
-    height: 40,
+    height: isSmallScreen ? 20 : 40,
     marginTop: 8,
     borderRadius: 12,
     objectFit: 'contain',
@@ -175,9 +181,9 @@ const styles = {
     position: 'relative',
     backgroundColor: '#003344',
     borderRadius: 30,
-    width: '90%',
-    maxWidth: 600,
-    padding: '40px 30px 50px',
+    width: '100%',
+    maxWidth: isSmallScreen ? 350 : 600,
+    padding: isSmallScreen ? '25px 20px 30px' : '40px 30px 50px',
     boxShadow: '0 0 40px #00aaff',
     color: '#a0d8ef',
     overflow: 'hidden',
@@ -193,7 +199,7 @@ const styles = {
     zIndex: 0,
   },
   modalLogo: {
-    height: 60,
+    height: isSmallScreen ? 30 : 60,
     marginBottom: 20,
     borderRadius: 8,
     objectFit: 'contain',
@@ -206,7 +212,7 @@ const styles = {
   modalTitle: {
     position: 'relative',
     zIndex: 1,
-    fontSize: '2.5rem',
+    fontSize: isSmallScreen ? '1.3rem' : '2.5rem',
     marginBottom: '20px',
     color: '#fff',
     textAlign: 'center',
@@ -214,21 +220,19 @@ const styles = {
   modalDetails: {
     position: 'relative',
     zIndex: 1,
-    fontSize: '1.2rem',
+    fontSize: isSmallScreen ? '0.8rem' : '1.2rem',
     lineHeight: 1.6,
     whiteSpace: 'pre-wrap',
   },
   closeButton: {
-    position: 'relative',
-    zIndex: 1,
-    marginTop: 30,
-    padding: '10px 20px',
-    borderRadius: 10,
+    position: 'absolute',
+    top: 15,
+    right: 15,
+    background: 'transparent',
     border: 'none',
-    backgroundColor: '#006699',
-    color: '#fff',
-    fontWeight: '600',
+    color: '#a0d8ef',
     cursor: 'pointer',
+    zIndex: 2,
   },
 };
 

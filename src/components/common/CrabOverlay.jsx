@@ -20,14 +20,13 @@ const CrabOverlay = () => {
     };
   }, []);
 
-  // Toggle message on/off, no removal now
   const handleClick = () => {
     setShowMessage((prev) => !prev);
   };
 
-  // Hide crab on small screens (e.g., below 768px)
-  if (windowWidth < 768) return null;
+  const isSmallScreen = windowWidth < 768;
 
+  // For large screens, floating top position based on scroll
   const maxTop = window.innerHeight - 160; // crab height ~160px
   const topPosition = Math.min(100 + scrollY * 0.1, maxTop);
 
@@ -37,10 +36,11 @@ const CrabOverlay = () => {
         onClick={handleClick}
         style={{
           position: 'fixed',
-          top: topPosition,
-          right: '20px',
-          width: '160px',
-          height: '160px',
+          bottom: isSmallScreen ? '0px' : 'auto',
+          top: isSmallScreen ? 'auto' : topPosition,
+          right: isSmallScreen ? '0px' : 'auto',
+          width: isSmallScreen ? '100px':'160px',
+          height: isSmallScreen ? '100px':'160px',
           cursor: 'pointer',
           opacity: 0.7,
           zIndex: 9999,
@@ -60,13 +60,14 @@ const CrabOverlay = () => {
         <div
           style={{
             position: 'fixed',
-            top: topPosition - 60,
-            right: '50px',
+            top: isSmallScreen ? 'auto' : topPosition - 60,
+            bottom: isSmallScreen ? '100px' : 'auto', // show message above crab on small screens
+            right: isSmallScreen ? '20px' : '50px',
             background: 'rgba(10, 62, 87, 0.95)',
             padding: '12px 20px',
             borderRadius: '15px',
             boxShadow: '0 0 25px rgba(146, 218, 247, 0.9)',
-            fontSize: '1.1rem',
+            fontSize: isSmallScreen ? '0.8rem':'1.1rem',
             color: '#92daf7',
             zIndex: 10000,
             userSelect: 'text',

@@ -1,5 +1,5 @@
 // src/components/WorkExperienceList.jsx
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import WorkExperienceCard from './WorkExperienceCard';
 import jspl from '../../assets/jspl.png';
 import asu from '../../assets/asu.png';
@@ -95,15 +95,28 @@ const experiences = [
 
 
 
-
 const WorkExperienceList = () => {
+  const [windowWidth, setWindowWidth] = useState(window.innerWidth);
+
+  useEffect(() => {
+    const handleResize = () => setWindowWidth(window.innerWidth);
+    window.addEventListener('resize', handleResize);
+    return () => window.removeEventListener('resize', handleResize);
+  }, []);
+
+  const getMarginTop = (index) => {
+    if (windowWidth < 768) return 40;     // Small screens
+    if (windowWidth < 1024) return 100;   // Medium screens
+    return index % 2 === 0 ? 0 : 280;     // Large screens stagger
+  };
+
   return (
     <div style={{ display: 'flex', flexWrap: 'wrap', justifyContent: 'center' }}>
       {experiences.map((exp, i) => (
         <div
           key={i}
           style={{
-            marginTop: i % 2 === 0 ? 0 : 280,  // Staggered layout like WorkExperienceList
+            marginTop: getMarginTop(i),
             transition: 'margin-top 0.3s ease',
           }}
         >

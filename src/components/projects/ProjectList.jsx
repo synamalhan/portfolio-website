@@ -1,5 +1,6 @@
 import React from 'react';
 import ProjectCard from './ProjectCard'; 
+import { useMediaQuery } from 'react-responsive';
 
 import PF1 from "../../assets/projects/PF1.jpeg";
 import LPD1 from "../../assets/projects/LPD1.jpeg";
@@ -350,19 +351,38 @@ const projects = [
   },
 ];
 
-
 const ProjectList = () => {
+  const isSmallScreen = useMediaQuery({ maxWidth: 768 });
+
   return (
-    <div style={{ display: 'flex', flexWrap: 'wrap', justifyContent: 'center' }}>
+    <div
+      style={{
+        display: 'flex',
+        flexWrap: 'wrap',
+        justifyContent: 'center',
+        gap: '20px', // spacing between cards
+        maxWidth: '1200px',
+        margin: '0 auto',
+      }}
+    >
       {projects.map((proj, i) => (
         <div
           key={i}
           style={{
-            marginTop: i % 2 === 0 ? 0 : 180,  // Staggered layout like WorkExperienceList
+            flexGrow: 1,
+            flexShrink: 1,
+            flexBasis: isSmallScreen ? '45%' : '30%', // cards take ~45% width on small screens, ~30% on larger
+            marginTop: i % 2 === 0 ? 0 : 30, // subtle stagger
+            boxSizing: 'border-box',
             transition: 'margin-top 0.3s ease',
           }}
         >
-          <ProjectCard title={proj.title} description={proj.summary} details={proj.details} image={proj.images} links={proj.links}
+          <ProjectCard
+            title={proj.title}
+            description={proj.summary}
+            details={proj.details}
+            image={proj.images}
+            links={proj.links}
           />
         </div>
       ))}

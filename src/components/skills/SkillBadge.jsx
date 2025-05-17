@@ -1,4 +1,4 @@
-import React, { useMemo, useState } from 'react';
+import React, { useMemo, useState, useEffect } from 'react';
 import Lottie from 'lottie-react';
 import starfishAnimation from '../../assets/starfish.json';
 
@@ -11,7 +11,7 @@ const generateRandomBlob = () => {
   return { borderRadius, background };
 };
 
-// Keyframes for shaking animation (inline style approach)
+// Slower shake animation
 const shakeKeyframes = `
   @keyframes shake {
     0% { transform: translate(1px, 1px) rotate(0deg); }
@@ -31,10 +31,17 @@ const shakeKeyframes = `
 const SkillCard = ({ skill, level }) => {
   const { borderRadius, background } = useMemo(generateRandomBlob, []);
   const [isHovered, setIsHovered] = useState(false);
+  const [isSmallScreen, setIsSmallScreen] = useState(false);
+
+  useEffect(() => {
+    const updateScreen = () => setIsSmallScreen(window.innerWidth < 600);
+    updateScreen();
+    window.addEventListener('resize', updateScreen);
+    return () => window.removeEventListener('resize', updateScreen);
+  }, []);
 
   return (
     <>
-      {/* Inject keyframes into the document */}
       <style>{shakeKeyframes}</style>
 
       <div
@@ -43,11 +50,11 @@ const SkillCard = ({ skill, level }) => {
         style={{
           background,
           borderRadius,
-          padding: '30px 20px',
-          minHeight: '100px',
+          padding: isSmallScreen ? '20px 14px' : '30px 20px',
+          minHeight: '80px',
           color: '#fff',
           fontFamily: "'Montserrat', sans-serif",
-          fontSize: '1.2rem',
+          fontSize: isSmallScreen ? '1rem' : '1.2rem',
           fontWeight: 'bold',
           boxShadow: '0 0 15px rgba(0, 0, 0, 0.3)',
           display: 'flex',
@@ -55,13 +62,25 @@ const SkillCard = ({ skill, level }) => {
           justifyContent: 'center',
           alignItems: 'center',
           transition: 'transform 0.3s ease-in-out',
-          animation: isHovered ? 'shake 0.5s infinite' : 'none',
+          animation: isHovered ? 'shake 1s infinite' : 'none',
         }}
       >
         <div>{skill}</div>
-        <div style={{ display: 'flex', marginTop: '10px', gap: '4px' }}>
+        <div
+          style={{
+            display: 'flex',
+            marginTop: '10px',
+            gap: isSmallScreen ? '2px' : '4px',
+          }}
+        >
           {Array.from({ length: level }).map((_, i) => (
-            <div key={i} style={{ width: '30px', height: '30px' }}>
+            <div
+              key={i}
+              style={{
+                width: isSmallScreen ? '18px' : '30px',
+                height: isSmallScreen ? '18px' : '30px',
+              }}
+            >
               <Lottie animationData={starfishAnimation} loop autoplay />
             </div>
           ))}
