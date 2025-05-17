@@ -2,7 +2,7 @@
   "name": "undersea-portfolio",
   "version": "0.1.0",
   "private": true,
-  "homepage": "https://synamalhan.github.io/portfolio-website",
+  "homepage": "https://synamalhan.github.io/website",
   "dependencies": {
     "@react-spring/parallax": "^10.0.0",
     "@react-spring/web": "^10.0.0",
