@@ -4,14 +4,10 @@ import ship from '../../assets/ship.webp';
 import crabJson from '../../assets/crab.json';
 
 const hobbies = [
-  'Sailing',
-  'Reading Sci-Fi',
-  'Photography',
-  'Coding',
-  'Exploring Nature',
-  'Cooking',
-  'Gaming',
-  'Marine Conservation',
+  'Building Metal Earth Models',
+  'Swmming',
+  'Marine Life',
+  'Coding'
 ];
 
 const FinalSection = () => {
@@ -100,7 +96,7 @@ const FinalSection = () => {
         <img
           src={ship}
           alt="Ship"
-          style={{ height: '550px', objectFit: 'contain' }} // much larger ship
+          style={{ height: '700px', objectFit: 'contain' , filter:'hue-rotate(190deg'}} // much larger ship
           onClick={() => {
             setShowHobbies(!showHobbies);
             setShowCrabMsg(false);

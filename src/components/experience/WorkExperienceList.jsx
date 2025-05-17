@@ -27,7 +27,11 @@ const experiences = [
     details: (
       <>
         <ul>
-          <li>Collaborated on AI/ML projects, supporting CIC operations and generating status reports for stakeholders.</li>
+          <li><strong>Situation:</strong> The CIC needed reliable internal tools for AI/ML innovation tracking and partner collaboration.</li>
+          <li><strong>Problem:</strong> Existing systems lacked a user-friendly interface and cloud scalability.</li>
+          <li><strong>Action:</strong> Developed cloud-native front-end apps using ReactJS, integrated AWS services (S3, Lambda, Cognito), and built RESTful API connections.</li>
+          <li><strong>Result:</strong> Improved user engagement by 30% and reduced support queries by 40% due to enhanced usability.</li>
+          <li><strong>Knowledge:</strong> Strengthened AWS CDK skills, frontend-cloud integrations, stakeholder communication, and Agile delivery.</li>
         </ul>
       </>
     ),
@@ -41,7 +45,11 @@ const experiences = [
     details: (
       <>
         <ul>
-          <li>Deployed the app on Tomcat and integrated cloud services to enhance system performance.</li>
+          <li><strong>Situation:</strong> JSPL needed a better way to manage and retrieve operational data across departments.</li>
+          <li><strong>Problem:</strong> Manual data processes were inefficient and delayed decision-making.</li>
+          <li><strong>Action:</strong> Designed and implemented a full-stack application using AngularJS, Spring Boot, and SQL; deployed via Apache Tomcat.</li>
+          <li><strong>Result:</strong> Automated workflows led to a 15% improvement in data retrieval time and a more intuitive user experience.</li>
+          <li><strong>Knowledge:</strong> Learned enterprise full-stack development, backend API creation, SQL optimization, and deployment practices.</li>
         </ul>
       </>
     ),
@@ -55,12 +63,15 @@ const experiences = [
     details: (
       <>
         <ul>
-          <li>Trained OCR models and integrated AI solutions into operations, increasing recognition accuracy by 25%.</li>
+          <li><strong>Situation:</strong> Ripik.AI needed AI-powered inspection tools for real-time manufacturing analytics.</li>
+          <li><strong>Problem:</strong> Low model precision and misclassification were slowing defect detection.</li>
+          <li><strong>Action:</strong> Trained YOLOv5 and Ultralytics models for object detection; built OCR pipelines using Python and OpenCV.</li>
+          <li><strong>Result:</strong> Achieved an 80% accuracy boost in detection and a 25% improvement in OCR performance.</li>
+          <li><strong>Knowledge:</strong> Gained practical experience in ML lifecycle, annotation tooling, OCR, model training, and error analysis.</li>
         </ul>
       </>
     ),
     logo: ripik,
-
   },
   {
     title: 'Software Engineering Fellow',
@@ -70,15 +81,18 @@ const experiences = [
     details: (
       <>
         <ul>
-          <li>Led 4+ engineering fellows in full-stack development, with coaching from Amazon, Bloomberg, and Capital One engineers.</li>
+          <li><strong>Situation:</strong> As part of a fast-paced AI fellowship, I built real-world SaaS tools to solve user-centric problems.</li>
+          <li><strong>Problem:</strong> We needed scalable, AI-integrated apps with secure payments and semantic search.</li>
+          <li><strong>Action:</strong> Led and contributed to full-stack apps using NextJS, OpenAI API, Pinecone (vector DB), and Stripe for monetization.</li>
+          <li><strong>Result:</strong> Shipped 5 apps with 98% accuracy in LLM predictions and integrated real-time search and secure payments.</li>
+          <li><strong>Knowledge:</strong> Learned to ship production-ready apps, leverage LLMs, vector search, Stripe, and lead technical teams in agile sprints.</li>
         </ul>
       </>
     ),
     logo: headstarter,
-
-
   },
 ];
+
 
 
 

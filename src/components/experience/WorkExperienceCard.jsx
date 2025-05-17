@@ -13,6 +13,7 @@ const huesWithFilters = [
 
 const WorkExperienceCard = ({ title, company, duration, summary, details, logo }) => {
   const [modalOpen, setModalOpen] = useState(false);
+  const [hovered, setHovered] = useState(false);  // <-- new state
 
   const { color: blobFillColor, filter: lottieFilter } = useMemo(() => {
     const idx = Math.floor(Math.random() * huesWithFilters.length);
@@ -37,24 +38,26 @@ const WorkExperienceCard = ({ title, company, duration, summary, details, logo }
 
   return (
     <>
-      <div
+     <div
         style={{ ...styles.card, boxShadow: 'none' }}
         onClick={() => setModalOpen(true)}
         role="button"
         tabIndex={0}
-        onKeyPress={(e) => {
-          if (e.key === 'Enter') setModalOpen(true);
-        }}
-      >
+        onKeyPress={(e) => { if (e.key === 'Enter') setModalOpen(true); }}
+        onMouseEnter={() => setHovered(true)}  // <-- hover handlers
+        onMouseLeave={() => setHovered(false)}
+        >
         <img
           src={bubblesGif}
           alt="Animated background"
-          style={{ ...styles.lottie, filter: lottieFilter, opacity:0.03 }}
+          style={{ ...styles.lottie, filter: lottieFilter, opacity: hovered ? 0.6 : 0.03,  // <-- opacity change on hover
+            transition: 'opacity 0.3s ease', }}
         />
         <Lottie
           animationData={bubbleAnimation}
           loop
-          style={{ ...styles.lottie, filter: lottieFilter, opacity: 1  }}
+          style={{ ...styles.lottie, filter: lottieFilter, opacity: hovered ? 0.5 : 1,  // <-- opacity change on hover
+            transition: 'opacity 0.3s ease', }}
         />
 
         <div style={styles.textOverlay}>

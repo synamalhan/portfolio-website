@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import submarine from '../../assets/submarine.jpeg';
 import linkedinIcon from '../../assets/linkedin.webp';
 import xIcon from '../../assets/x.png';
-
+import githubIcon from '../../assets/github.png'
 const openEmailClient = () => {
   window.location.href = 'mailto:synamalhan22@gmail.com';
 };
@@ -10,16 +10,22 @@ const openEmailClient = () => {
 const socialMedia = [
   {
     name: 'LinkedIn',
-    url: 'https://linkedin.com/in/yourprofile',
+    url: 'https://linkedin.com/in/synamalhan',
     icon: linkedinIcon,
     color: '#0077B5',
   },
   {
-    name: 'X',
-    url: 'https://x.com/yourprofile',
-    icon: xIcon,
+    name: 'Github',
+    url: 'https://github.com/synamalhan',
+    icon: githubIcon,
     color: '#000000',
   },
+  // {
+  //   name: 'X',
+  //   url: 'https://x.com/yourprofile',
+  //   icon: xIcon,
+  //   color: '#000000',
+  // },
 ];
 
 const blobStyle = (color) => ({

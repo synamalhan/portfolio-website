@@ -29,7 +29,11 @@ const FloatingFishResume4 = () => {
         <Lottie 
           animationData={fishAnimation} 
           loop={true} 
-          style={styles.lottie} 
+          style={{
+            ...styles.lottie,
+            transform: open ? 'rotate(-10deg)' : 'rotate(0deg)',
+            transition: 'transform 0.3s ease',
+          }}
         />
         {open && (
           <div style={styles.resumeLink}>Download Resume</div>

@@ -11,11 +11,12 @@ import ContactSection from '../components/contacts/ContactSection';
 import SunkenShipSection from '../components/hobbies/SunkenShipSection';
 
 import BubbleOverlay from '../components/common/BubbleOverlay';
-
+import ReefOverlay from '../components/common/ReefOverlay';
 const HomePage = () => {
   return (
     <div style={{ position: 'relative', overflowX: 'hidden' }}>
       <BubbleOverlay />
+      {/* <ReefOverlay /> */}
       <Navbar />
       <HeroSection />
       <AboutMe />

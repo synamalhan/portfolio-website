@@ -1,0 +1,57 @@
+#reef-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+    z-index: 10;
+    display: flex;
+    justify-content: space-between;
+    align-items: stretch;
+  }
+  
+  .reef-column {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    height: 100%;
+    width: 80px;
+    padding: 20px 0;
+  }
+  
+  .reef-left .reef-shape {
+    transform: translateX(-10px);
+  }
+  
+  .reef-right .reef-shape {
+    transform: translateX(10px);
+  }
+  
+  .reef-shape {
+    width: 60px;
+    height: 80px;
+    opacity: 0.9;
+    animation: sway 12s ease-in-out infinite;
+  }
+  
+  .reef-shape svg {
+    width: 100%;
+    height: 100%;
+  }
+  
+  .reef-bottom {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    display: flex;
+    width: 100%;
+    justify-content: space-around;
+    padding-bottom: 10px;
+  }
+  
+  @keyframes sway {
+    0%, 100% { transform: translateX(0px); }
+    50% { transform: translateX(5px); }
+  }
+  

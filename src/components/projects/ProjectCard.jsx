@@ -13,11 +13,12 @@ const huesWithFilters = [
   { color: '#00e6f6', filter: 'hue-rotate(60deg)' },
 ];
 
-
 const blobPath = `M120,-132.6C159.2,-109.4,190.9,-71.4,191.8,-30.3C192.7,10.7,162.7,53.8,128.3,81.7C93.9,109.6,55,122.3,17.3,111.9C-20.4,101.5,-40.7,68,-67.8,45.4C-94.9,22.8,-128.9,11.4,-144.6,-16.2C-160.3,-43.8,-157.6,-88.4,-131.7,-110.4C-105.8,-132.3,-56.8,-131.6,-21.7,-116.2C13.5,-100.8,26.9,-70.9,120,-132.6Z`;
 
-const ProjectCard = ({ title, description, details, image }) => {
+const ProjectCard = ({ title, description, details, image, links }) => {
   const [modalOpen, setModalOpen] = useState(false);
+  const [isHovered, setIsHovered] = useState(false); // Track hover state
+
   const { color: blobFillColor, filter: lottieFilter } = useMemo(() => {
     const idx = Math.floor(Math.random() * huesWithFilters.length);
     return huesWithFilters[idx];
@@ -28,7 +29,6 @@ const ProjectCard = ({ title, description, details, image }) => {
     setModalHue({ color: blobFillColor, filter: lottieFilter });
     setModalOpen(true);
   };
-
 
   const blobSvg = (
     <svg viewBox="0 0 600 600" xmlns="http://www.w3.org/2000/svg" style={{ width: '100%', height: '100%' }}>
@@ -41,8 +41,15 @@ const ProjectCard = ({ title, description, details, image }) => {
   return (
     <>
       <div
-        style={{ ...styles.card, boxShadow: 'none' }}
-        onClick={(openModal)}
+        style={{
+          ...styles.card,
+          boxShadow: 'none',
+          transform: isHovered ? 'scale(1.3)' : 'scale(1)',
+          transition: 'transform 0.3s ease-in-out',
+        }}
+        onClick={openModal}
+        onMouseEnter={() => setIsHovered(true)}
+        onMouseLeave={() => setIsHovered(false)}
         role="button"
         tabIndex={0}
         onKeyPress={(e) => {
@@ -52,9 +59,8 @@ const ProjectCard = ({ title, description, details, image }) => {
         <img
           src={jellyfishGif}
           alt="Animated background"
-          style={{ ...styles.lottie, filter: lottieFilter, opacity:0.8 }}
+          style={{ ...styles.lottie, filter: lottieFilter, opacity: 0.8 }}
         />
-        
 
         <div style={styles.textOverlay}>
           <div style={styles.titleText}>{title}</div>
@@ -64,26 +70,26 @@ const ProjectCard = ({ title, description, details, image }) => {
       {modalOpen && (
         <div style={styles.modalOverlay} onClick={() => setModalOpen(false)}>
           <div style={styles.modalContent} onClick={(e) => e.stopPropagation()}>
-          <div style={{ ...styles.blobWrapper }}>
-  {[...Array(3)].map((_, i) => (
-    <div
-      key={i}
-      style={{
-        ...styles.blobBackground,
-        top: -100 + i * 50,
-        left: -100 + i * 80,
-        transform: `scale(${1 - i * 0.2}) rotate(${i * 20}deg)`,
-        filter: modalHue.filter,
-      }}
-    >
-      <svg viewBox="0 0 600 600" xmlns="http://www.w3.org/2000/svg" style={{ width: '100%', height: '100%' }}>
-        <g transform="translate(300,300)">
-          <path d={blobPath} fill={modalHue.color} opacity="0.2" />
-        </g>
-      </svg>
-    </div>
-  ))}
-</div>
+            <div style={{ ...styles.blobWrapper }}>
+              {[...Array(3)].map((_, i) => (
+                <div
+                  key={i}
+                  style={{
+                    ...styles.blobBackground,
+                    top: -100 + i * 50,
+                    left: -100 + i * 80,
+                    transform: `scale(${1 - i * 0.2}) rotate(${i * 20}deg)`,
+                    filter: modalHue.filter,
+                  }}
+                >
+                  <svg viewBox="0 0 600 600" xmlns="http://www.w3.org/2000/svg" style={{ width: '100%', height: '100%' }}>
+                    <g transform="translate(300,300)">
+                      <path d={blobPath} fill={modalHue.color} opacity="0.2" />
+                    </g>
+                  </svg>
+                </div>
+              ))}
+            </div>
 
             <button onClick={() => setModalOpen(false)} style={styles.closeButton} aria-label="Close modal">
               <X size={24} />
@@ -92,6 +98,20 @@ const ProjectCard = ({ title, description, details, image }) => {
             <h2 style={styles.modalTitle}>{title}</h2>
             <p style={styles.modalDescription}>{description}</p>
             <div style={styles.modalDetails}>{details}</div>
+            {links && links.length > 0 && (
+              <div style={styles.modalLinks}>
+                <h3 style={styles.linksTitle}>Links</h3>
+                <ul style={styles.linkList}>
+                  {links.map((linkObj, index) => (
+                    <li key={index} style={styles.linkItem}>
+                      <a href={linkObj.url} target="_blank" rel="noopener noreferrer" style={styles.linkAnchor}>
+                        {linkObj.label || 'View Project'}
+                      </a>
+                    </li>
+                  ))}
+                </ul>
+              </div>
+            )}
           </div>
         </div>
       )}
@@ -111,7 +131,6 @@ const styles = {
     display: 'flex',
     justifyContent: 'center',
     alignItems: 'center',
-    // background: '#001f2f',
   },
   lottie: {
     position: 'absolute',
@@ -127,7 +146,7 @@ const styles = {
     inset: 0,
     zIndex: 0,
     pointerEvents: 'none',
-  },  
+  },
   textOverlay: {
     position: 'relative',
     zIndex: 1,
@@ -166,19 +185,17 @@ const styles = {
     zIndex: 9999,
     padding: '20px',
   },
-  
   modalContent: {
     position: 'relative',
     backgroundColor: '#001f2f', // dark sea blue for depth
     borderRadius: 30,
     width: '90%',
-    maxWidth: 600,
     padding: '40px 30px 50px',
     boxShadow: '0 0 30px #00d2ff',
     color: '#a0eefd',
     overflow: 'hidden',
     zIndex: 2,
-  },  
+  },
   blobBackground: {
     position: 'absolute',
     top: -100,
@@ -190,7 +207,7 @@ const styles = {
     zIndex: 0,
   },
   modalLogo: {
-    height: 60,
+    height: 250,
     marginBottom: 20,
     borderRadius: 8,
     objectFit: 'contain',
@@ -230,6 +247,31 @@ const styles = {
     color: '#a0d8ef',
     cursor: 'pointer',
     zIndex: 2,
+  },
+  modalLinks: {
+    marginTop: 25,
+    paddingTop: 15,
+    borderTop: '1px solid #00d2ff',
+  },
+  linksTitle: {
+    fontSize: '1.25rem',
+    color: '#ffffff',
+    marginBottom: 10,
+    textAlign: 'center',
+  },
+  linkList: {
+    listStyleType: 'none',
+    paddingLeft: 0,
+    display: 'flex',
+    justifyContent: 'center',
+    gap: 20,
+  },
+  linkItem: {},
+  linkAnchor: {
+    fontSize: '1.1rem',
+    color: '#00d2ff',
+    textDecoration: 'none',
+    fontWeight: '600',
   },
 };
 
