@@ -221,7 +221,7 @@ const styles = {
     zIndex: 0,
   },
   modalLogo: {
-    height: isSmallScreen ? 0 : 250,
+    height: isSmallScreen ? 30 : 250,
     marginBottom: 20,
     borderRadius: 8,
     objectFit: 'contain',

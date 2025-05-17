@@ -13,7 +13,7 @@ import MX from "../../assets/projects/MX.png";
 import OP from "../../assets/projects/OP.png";
 import PA from "../../assets/projects/PA.png";
 import ED from "../../assets/projects/ED.png";
-
+import G from "../../assets/projects/G.png";
 
 const projects = [
   {
@@ -157,8 +157,8 @@ const projects = [
     
   },
   {
-    title: 'Medical Image Analysis for Early Disease Detection',
-    summary: 'Developed CNN model to detect anomalies in medical images using U-Net for segmentation.',
+    title: 'Medical Image Analysis for Early Brain Tumor Detection',
+    summary: 'Developed CNN model to detect anomalies in medical images (Brain Tumor) using U-Net for segmentation.',
     duration: 'Jan 2025',
     techStack: ['TensorFlow', 'Keras', 'U-Net', 'ResNet', 'VGG'],
     details: (
@@ -172,6 +172,10 @@ const projects = [
       </>
     ),
     images:MX,
+    links:[
+      { label: 'GitHub Repo', url: 'https://github.com/synamalhan/brain-tumor-cnn.git' },
+      // { label: 'Demo', url: 'https://youtu.be/BNgE11T8JC0' },
+      ],
   
   },
   {
@@ -349,6 +353,47 @@ const projects = [
       </>
     ),
   },
+
+  {
+    title: 'Personal Portfolio Website',
+    summary: 'Designed and developed a responsive portfolio website to showcase my projects, skills, and creative identity.',
+    duration: 'March 2025 – April 2025',
+    techStack: ['React', 'Lottie', 'JavaScript', 'GitHub Pages', 'CSS Modules'],
+    details: (
+      <>
+        <p><strong>Situation:</strong> I needed a centralized, professional platform to present my projects, background, and technical capabilities in a personalized and interactive way.</p>
+        <p><strong>Problem:</strong> Traditional resumes and static sites felt too limiting for conveying creativity, technical depth, and dynamic content.</p>
+        <p><strong>Action:</strong> Built a fully responsive React-based website, integrated Lottie animations for interactive visuals, and deployed via GitHub Pages for easy public access.</p>
+        <p><strong>Result:</strong> Created a dynamic, engaging online presence that reflects both my personality and skillset, while making it easy for collaborators and recruiters to explore my work.</p>
+        <p><strong>What I Learned:</strong> Component-based UI design, animation integration using Lottie, cross-device responsiveness, and deploying React apps on static hosting platforms like GitHub Pages.</p>
+      </>
+    ),
+    links:[
+      { label: 'GitHub Repo', url: 'https://github.com/synamalhan/website.git' },
+      { label: 'Live demo', url: 'https://synamalhan.github.io/website/' },
+      ],
+  },
+  {
+      title: 'Gamify Life – Productivity To-Do App',
+      summary: 'Built a personal productivity tracker with a reward system to gamify daily tasks and monitor indulgences.',
+      duration: 'February 2025 – March 2025',
+      techStack: ['Python', 'Streamlit', 'Supabase', 'PostgreSQL'],
+      details: (
+        <>
+          <p><strong>Situation:</strong> I wanted a simple yet motivating way to track my productivity, habits, and indulgences without relying on generic apps.</p>
+          <p><strong>Problem:</strong> Existing to-do list apps lacked personalization and reward systems tailored to my daily routines and goals.</p>
+          <p><strong>Action:</strong> Developed a lightweight Streamlit app backed by Supabase to manage tasks and assign reward points based on task completion, penalties for indulgences, and daily summaries.</p>
+          <p><strong>Result:</strong> Improved self-awareness and task consistency through a personalized, gamified approach to productivity tracking.</p>
+          <p><strong>What I Learned:</strong> Backend integration using Supabase, state management in Streamlit, user interface design for utility-focused apps, and balancing personal goals with behavioral feedback systems.</p>
+        </>
+      ),
+      images: G, // Replace with your image import variable
+    links:[
+      { label: 'GitHub Repo', url: 'https://github.com/synamalhan/gamify-life.git' },
+      { label: 'Live demo', url: 'https://youtu.be/yQi9CLcjFig' },
+      ],
+  }
+  
 ];
 
 const ProjectList = () => {
