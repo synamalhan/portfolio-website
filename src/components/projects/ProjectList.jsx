@@ -33,7 +33,7 @@ const projects = [
     ),
     images:LPD1,
     links:[
-      { label: 'GitHub Repo', url: 'https://github.com/synamalhan/dispatch_optimization_FG_forecasting' },
+      { label: 'GitHub Repo', url: 'https://github.com/synamalhan/dispatch_optimization_FG_forecasting', },
       ],
     },
 

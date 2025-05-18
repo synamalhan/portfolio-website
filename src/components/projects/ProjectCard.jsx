@@ -102,7 +102,7 @@ const ProjectCard = ({ title, description, details, image, links }) => {
             <button onClick={() => setModalOpen(false)} style={styles.closeButton} aria-label="Close modal">
               <X size={24} />
             </button>
-            {image && <img src={image} alt="Project" style={styles.modalLogo} />}
+            {/* {image && <img src={image} alt="Project" style={styles.modalLogo} />} */}
             <h2 style={styles.modalTitle}>{title}</h2>
             <p style={styles.modalDescription}>{description}</p>
             <div style={styles.modalDetails}>{details}</div>
@@ -202,7 +202,7 @@ const styles = {
     position: 'relative',
     backgroundColor: '#001f2f', // dark sea blue for depth
     borderRadius: 30,
-    width: '90%',
+    width: '60%',
     maxWidth: '90%',
     padding: isSmallScreen ? '25px 20px 30px 20px' : '40px 30px 50px 50px',
     boxShadow: '0 0 30px #00d2ff',
