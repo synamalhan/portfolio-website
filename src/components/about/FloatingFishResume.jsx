@@ -6,14 +6,20 @@ const FloatingFishResume = () => {
   const [open, setOpen] = useState(false);
 
   const handleDownload = () => {
+    const resumeUrl = '/resume.pdf'; // Make sure resume.pdf is in your public/ folder
+  
+    // Open in new tab
+    window.open(resumeUrl, '_blank');
+  
+    // Start download
     const link = document.createElement('a');
-    link.href = '/resume.pdf'; // Place resume.pdf in your public/ directory
+    link.href = resumeUrl;
     link.download = 'Syna_Resume.pdf';
     document.body.appendChild(link);
     link.click();
     document.body.removeChild(link);
   };
-
+  
   return (
     <div
       style={styles.container}
