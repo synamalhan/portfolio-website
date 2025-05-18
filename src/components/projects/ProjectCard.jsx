@@ -203,8 +203,8 @@ const styles = {
     backgroundColor: '#001f2f', // dark sea blue for depth
     borderRadius: 30,
     width: '90%',
-    maxWidth: isSmallScreen ? 350 : 600,
-    padding: isSmallScreen ? '25px 20px 30px' : '40px 30px 50px',
+    maxWidth: '90%',
+    padding: isSmallScreen ? '25px 20px 30px 20px' : '40px 30px 50px 50px',
     boxShadow: '0 0 30px #00d2ff',
     color: '#a0eefd',
     overflow: 'hidden',
@@ -221,7 +221,7 @@ const styles = {
     zIndex: 0,
   },
   modalLogo: {
-    height: isSmallScreen ? 30 : 250,
+    height: isSmallScreen ? 0 : 150,
     marginBottom: 20,
     borderRadius: 8,
     objectFit: 'contain',
